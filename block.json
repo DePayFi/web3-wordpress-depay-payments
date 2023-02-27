@@ -1,0 +1,26 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "depay-payments/block",
+  "title": "DePay Payments",
+  "category": "widgets",
+  "description": "Web3 payments directly into your own wallet. A Block-enabled WordPress plugin for P2P crypto payments with on-the-fly conversion.",
+  "keywords": [ "payments", "cryptocurrency", "p2p", "web3", "depay" ],
+  "version": "1.0.0",
+  "textdomain": "depay-payments",
+  "example": {},
+  "editorScript": "depay-payments-script",
+  "supports": {
+    "align": ["left", "right", "center"],
+    "spacing": {
+      "margin": true,
+      "padding": true
+    }
+  },
+  "attributes": {
+    "align": {
+      "type": "string",
+      "default": "center"
+    }
+  }
+}

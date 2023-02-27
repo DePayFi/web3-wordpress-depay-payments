@@ -1,0 +1,1 @@
+DePayButtons.init({document: document});
