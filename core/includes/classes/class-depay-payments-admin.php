@@ -414,7 +414,7 @@ class DePay_Payments_Admin{
               <?php 
                 foreach ($currencies as &$currency) {
                   ?>
-                    <option value="<?php echo($currency)?>" <?php echo($widgetDisplayCurrency == $currency ? 'selected="selected"' : '') ?>><?php echo($currency)?></option>
+                    <option value="<?php echo(esc_html( $currency ))?>" <?php echo($widgetDisplayCurrency == $currency ? 'selected="selected"' : '') ?>><?php echo($currency)?></option>
                   <?php
                 }
               ?>
@@ -425,19 +425,19 @@ class DePay_Payments_Admin{
         <div id="DePay_payments_widget_free_amount" class="<?php echo($widgetAmountType == 'fix' ? 'hidden' : '') ?>" style="padding-top: 0.8rem">
           <div style="margin-bottom: 0.8rem">
             <label style="display: flex; align-items: center;">
-              <input type="number" step=".01" name="DePay_payments_widget_amount_free_start" value="<?php echo($widgetAmountFreeStart) ?>" placeholder="Start value" style="margin-right: 0.8rem;"/>
+              <input type="number" step=".01" name="DePay_payments_widget_amount_free_start" value="<?php echo(esc_html( $widgetAmountFreeStart )) ?>" placeholder="Start value" style="margin-right: 0.8rem;"/>
               Start Value
             </label>
           </div>
           <div style="margin-bottom: 0.8rem">
             <label style="display: flex; align-items: center;">
-              <input type="number" step=".01" name="DePay_payments_widget_amount_free_min" value="<?php echo($widgetAmountFreeMin) ?>" placeholder="Min value" style="margin-right: 0.8rem;"/>
+              <input type="number" step=".01" name="DePay_payments_widget_amount_free_min" value="<?php echo(esc_html( $widgetAmountFreeMin )) ?>" placeholder="Min value" style="margin-right: 0.8rem;"/>
               Min Value
             </label>
           </div>
           <div>
             <label style="display: flex; align-items: center;">
-              <input type="number" step=".01" name="DePay_payments_widget_amount_free_step" value="<?php echo($widgetAmountFreeStep) ?>" placeholder="Step value" style="margin-right: 0.8rem;"/>
+              <input type="number" step=".01" name="DePay_payments_widget_amount_free_step" value="<?php echo(esc_html( $widgetAmountFreeStep )) ?>" placeholder="Step value" style="margin-right: 0.8rem;"/>
               Step Value
             </label>
           </div>
@@ -449,7 +449,7 @@ class DePay_Payments_Admin{
                 <?php 
                   foreach ($currencies as &$currency) {
                     ?>
-                      <option value="<?php echo($currency)?>" <?php echo($widgetAmountCurrency == $currency ? 'selected="selected"' : '') ?>><?php echo($currency)?></option>
+                      <option value="<?php echo(esc_html( $currency ))?>" <?php echo($widgetAmountCurrency == $currency ? 'selected="selected"' : '') ?>><?php echo($currency)?></option>
                     <?php
                   }
                 ?>
@@ -459,7 +459,7 @@ class DePay_Payments_Admin{
           </div>
           <div style="margin-bottom: 0.8rem">
             <label style="display: flex; align-items: center;">
-              <input type="number" step=".01" name="DePay_payments_widget_fix_amount" value="<?php echo($widgetFixAmount) ?>" placeholder="Fix amount" style="margin-right: 0.8rem;"/>
+              <input type="number" step=".01" name="DePay_payments_widget_fix_amount" value="<?php echo(esc_html( $widgetFixAmount )) ?>" placeholder="Fix amount" style="margin-right: 0.8rem;"/>
               Fix Amount
             </label>
           </div>
