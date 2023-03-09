@@ -53,7 +53,6 @@ class DePay_Payments_Admin{
             <input type="hidden" name='DePay_payments_widget_color_buttons' value="#ffffff"/>
             <input type="hidden" name='DePay_payments_widget_color_icons' value="#000000"/>
             <input type="hidden" name='DePay_payments_widget_color_text' value="#212529>"/>
-            <input type='hidden' name='DePay_payments_widget_css' value="&#10;.ButtonPrimary {&#10;  border-radius: 2px;&#10;}&#10;&#10;.ButtonPrimary:hover {&#10;  opacity: 0.9;&#10;}&#10;"/>
           <?php
             }
           ?>
@@ -83,22 +82,6 @@ class DePay_Payments_Admin{
           })
           return accept
         }
-        var widgetEditor = ace.edit("widgetEditor")
-        widgetEditor.session.setOptions({ tabSize: 2, useSoftTabs: true })
-        widgetEditor.session.setMode("ace/mode/css")
-        let unmount
-        widgetEditor.session.on('change', _debounce(()=>{
-          let css = widgetEditor.getValue()
-          document.getElementById('DePay_payments_widget_css').value = css
-        }, 800));
-
-        var buttonEditor = ace.edit("buttonEditor")
-        buttonEditor.session.setOptions({ tabSize: 2, useSoftTabs: true })
-        buttonEditor.session.setMode("ace/mode/css")
-        buttonEditor.session.on('change', _debounce(function(delta) {
-          let css = buttonEditor.getValue()
-          document.getElementById('DePay_payments_button_css').value = css
-        }, 500));
       </script>
     <?php
     }
@@ -287,7 +270,6 @@ class DePay_Payments_Admin{
   public static function add_scripts_and_styles() {
     wp_enqueue_style( 'DEPAYPAYMENTS-styles-admin', DEPAYPAYMENTS_PLUGIN_URL . 'core/includes/assets/css/admin.css', array(), DEPAYPAYMENTS_VERSION, 'all' );
     wp_enqueue_script( 'DEPAYPAYMENTS-scripts-debounce', DEPAYPAYMENTS_PLUGIN_URL . 'core/includes/assets/js/debounce.js', array(), DEPAYPAYMENTS_VERSION, false );
-    wp_enqueue_script( 'DEPAYPAYMENTS-scripts-ace', DEPAYPAYMENTS_PLUGIN_URL . 'core/includes/assets/js/ace.js', array(), DEPAYPAYMENTS_VERSION, false );
     wp_enqueue_script( 'DEPAYPAYMENTS-scripts-widgets', DEPAYPAYMENTS_PLUGIN_URL . 'core/includes/assets/js/widgets.bundle.js', array(), DEPAYPAYMENTS_VERSION, false );
     wp_enqueue_script( 'DEPAYPAYMENTS-scripts-react-shadow-dom', DEPAYPAYMENTS_PLUGIN_URL . 'core/includes/assets/js/react-shadow-dom.js', ['wp-element'], DEPAYPAYMENTS_VERSION, false );
     wp_enqueue_script( 'DEPAYPAYMENTS-scripts-blockchains', DEPAYPAYMENTS_PLUGIN_URL . 'core/includes/assets/js/blockchains.js', ['wp-element'], DEPAYPAYMENTS_VERSION, false );
@@ -363,12 +345,6 @@ class DePay_Payments_Admin{
     $buttonCSS = get_option( 'DePay_payments_button_css' );
     $buttonLabel = get_option( 'DePay_payments_button_label' );
     ?>
-      <div>
-        <div><p class="description" ><strong>CSS</strong></p></div>
-        <div><p class="description">You can add CSS attributes like <strong>background-color</strong>, <strong>border-radius</strong> etc.</p></div>
-        <div id="buttonEditor" class="editor" style="margin-top:0.8rem"><?php echo esc_html($buttonCSS) ?></div>
-        <input type='hidden' id='DePay_payments_button_css' name='DePay_payments_button_css' value='<?php echo esc_html($buttonCSS); ?>'/>
-      </div>
       <div style="margin-top: 0.8rem">
         <label>
           <div><p class="description" ><strong>Label</strong></p></div>
@@ -471,12 +447,6 @@ class DePay_Payments_Admin{
         <div style="margin-bottom: 0.8rem"><label style="display: flex; align-items: center;"><input name='DePay_payments_widget_color_buttons' id="depayPaymentWidgetStyleColorButtonText" style="margin-right: 0.6rem" type="color" value="<?php echo esc_html($widgetColorButtons) ?>"/>Button Text</label></div>
         <div style="margin-bottom: 0.8rem"><label style="display: flex; align-items: center;"><input name='DePay_payments_widget_color_icons' id="depayPaymentWidgetStyleColorIcons" style="margin-right: 0.6rem" type="color" value="<?php echo esc_html($widgetColorIcons) ?>"/>Icon Color</label></div>
         <div style="margin-bottom: 0.8rem"><label style="display: flex; align-items: center;"><input name='DePay_payments_widget_color_text' id="depayPaymentWidgetStyleColorText" style="margin-right: 0.6rem" type="color" value="<?php echo esc_html($widgetColorText) ?>"/>Text</label></div>
-      </div>
-      <div>
-        <p class="description"><strong>CSS</strong></p>
-        <div><p class="description">You can style classes like <strong>.Dialog</strong>, <strong>.ButtonPrimary</strong>: <a href="https://github.com/DePayFi/widgets/tree/master/src/styles" target="_blank">See all available classes</a></p></div>
-        <div id="widgetEditor" class="editor" style="margin-top: 0.8rem"><?php echo esc_html($widgetCSS) ?></div>
-        <input type='hidden' id='DePay_payments_widget_css' name='DePay_payments_widget_css' value='<?php echo esc_html($widgetCSS); ?>'/>
       </div>
       
       <div style="padding-top: 0.8rem;">
