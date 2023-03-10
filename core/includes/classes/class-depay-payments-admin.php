@@ -390,7 +390,7 @@ class DePay_Payments_Admin{
               <?php 
                 foreach ($currencies as &$currency) {
                   ?>
-                    <option value="<?php echo(esc_html( $currency ))?>" <?php echo($widgetDisplayCurrency == $currency ? 'selected="selected"' : '') ?>><?php echo($currency)?></option>
+                    <option value="<?php echo(esc_html( $currency ))?>" <?php echo($widgetDisplayCurrency == $currency ? 'selected="selected"' : '') ?>><?php echo(esc_html($currency))?></option>
                   <?php
                 }
               ?>
@@ -425,7 +425,7 @@ class DePay_Payments_Admin{
                 <?php 
                   foreach ($currencies as &$currency) {
                     ?>
-                      <option value="<?php echo(esc_html( $currency ))?>" <?php echo($widgetAmountCurrency == $currency ? 'selected="selected"' : '') ?>><?php echo($currency)?></option>
+                      <option value="<?php echo(esc_html( $currency ))?>" <?php echo($widgetAmountCurrency == $currency ? 'selected="selected"' : '') ?>><?php echo(esc_html($currency))?></option>
                     <?php
                   }
                 ?>
