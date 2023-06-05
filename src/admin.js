@@ -186,11 +186,11 @@
 
         if(displayedCurrency === 'local' || displayedCurrency === undefined) {
           LocalCurrency.Currency.rate({ from: new LocalCurrency.Currency({ amount: 0 }).code, to: 'USD' }).then((rate)=>{
-            setUsdValue((startValue/rate).toFixed(2))
+            setUsdValue(((startValue || 1)/rate).toFixed(2))
           })
         } else {
           LocalCurrency.Currency.rate({ from: displayedCurrency, to: 'USD' }).then((rate)=>{
-            setUsdValue((startValue/rate).toFixed(2))
+            setUsdValue(((startValue || 1)/rate).toFixed(2))
           })
         }
       }
