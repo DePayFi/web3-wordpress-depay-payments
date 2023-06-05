@@ -16,7 +16,741 @@
   display: none;
 }
 
-.DePay_payments_accepted_payment tr td {
+.DePay_donations_accepted_payment tr td {
   display: flex;
   flex-direction: row;
+}
+
+.widget-example {
+  min-width: 400px;
+  display: inline-block;
+}
+
+ .widget-example * {
+  cursor: default !important;
+  font-family: apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+.widget-example .ReactDialog {
+  position: relative !important;
+  z-index: 0;
+}
+
+.widget-example .TokenSymbolCell {
+  padding-right: 6px;
+}
+
+.widget-example .ReactDialog .Dialog {
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+.widget-example .CardText {
+  letter-spacing: 0px !important;
+}
+
+.widget-example h1, .widget-example h2, .widget-example h3, .widget-example h4 {
+  color: #430137;
+  font-weight: normal !important;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+}
+
+.widget-example h1 {
+  line-height: 2.1rem;
+  font-size: 1.4rem !important;
+}
+
+.widget-example h4 {
+  font-size: 0.9rem !important;
+  color: rgb(150,150,150);
+  margin-bottom: 0 !important;
+}
+
+.widget-example h2, .widget-example h3 {
+  font-size: 1.3rem !important;
+}
+
+.widget-example .Dialog .Card {
+  min-height: auto;
+}
+
+.widget-example .CardText small {
+  color: rgb(150,150,150);
+}
+
+.widget-example .ReactDialog .ButtonCircular {
+  position: relative;
+  right: -6px;
+}
+
+.widget-example .FooterLink {
+  color: rgba(0,0,0,0.2);
+  display: inline-block;
+  font-size: 0.9rem;
+  text-decoration: none;
+}
+
+.widget-example .Dialog {
+  border-bottom-left-radius: 0.8rem !important;
+  border-bottom-right-radius: 0.8rem !important;
+}
+
+.widget-example .ReactDialog {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.widget-example * {
+  box-sizing: border-box;
+}
+.widget-example  button {
+  border: 0;
+  background: none;
+  outline: none;
+}
+.widget-example  .ReactDialogBackground {
+  backdrop-filter: blur(5px);
+  background: rgba(0,0,0,0.7);
+}
+.widget-example .Dialog {
+  margin: 0 auto;
+  position: relative;
+  width: 420px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.1);
+  border-radius: 13px;
+  background: rgb(248,248,248);
+}
+.widget-example  .DialogBody {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+.widget-example  .DialogBody.ScrollHeight {
+  height: 30vh !important;
+  max-height: 30vh !important;
+}
+.widget-example  .DialogHeader {
+  border-top-left-radius: 13px;
+  border-top-right-radius: 13px;
+  min-height: 54px;
+  position: relative;
+  width: 100%;
+}
+.widget-example  .DialogHeaderActionRight {
+  position: absolute;
+  top: 0;
+  right: 8px;
+  height: 48px;
+}
+.widget-example  .DialogHeaderActionRight .Icon {
+position: relative;
+top: -2px;
+}
+.widget-example  .DialogHeaderActionLeft {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 48px;
+}
+.widget-example  .DialogFooter {
+  border-bottom-left-radius: 13px;
+  border-bottom-right-radius: 13px;
+  line-height: 24px;
+  min-height: 32px;
+  position: relative;
+  text-align: center;
+}
+.widget-example  .ButtonCircular {
+  border-radius: 9999px;
+  cursor: pointer;
+  height: 34px;
+  opacity: 0.5;
+  padding: 5px 4px 4px 4px;
+  width: 34px;
+}
+.widget-example  .ButtonCircular:hover {
+  background: rgba(0,0,0,0.1);
+  opacity: 1;
+}
+.widget-example  .ButtonCircular:active {
+  background: rgba(0,0,0,0.25);
+  opacity: 1;
+}
+.widget-example .ButtonPrimary {
+  align-items: center;
+  align-self: center;
+  background: #ea357a;
+  border-radius: 13px;
+  border: 1px solid transparent;
+  box-shadow: 0 0 16px rgba(0,0,0,0.1);
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 40px;
+  height: 58px;
+  justify-content: center;
+  width: 100%;
+  overflow: hidden;
+  padding: 7px 0;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  text-overflow: ellipsis;
+  transition: background 0.1s;
+  vertical-align: middle;
+  display: inline-block;
+}
+.widget-example  .ButtonPrimary, .widget-example  .ButtonPrimary * {
+  color: #ffffff;
+}
+.widget-example .ButtonPrimary.disabled {
+  background: rgb(210,210,210);
+  color: rgb(140,140,140);
+}
+.widget-example .ButtonPrimary:not(.disabled){
+  cursor: pointer;
+}
+.widget-example .ButtonPrimary:not(.disabled):hover {
+  box-shadow: inset 0 0 300px rgba(0,0,0,0.1);
+}
+.widget-example .ButtonPrimary:not(.disabled):active {
+  box-shadow: inset 0 0 300px rgba(0,0,0,0.2);
+}
+.widget-example .Card {
+  align-items: center;
+  background: rgb(255,255,255);
+  border-radius: 13px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.03);
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 8px;
+  min-height: 76px;
+  padding: 16px 10px;
+  width: 100%;
+}
+.widget-example .Card.Row {
+  border-radius: 0;
+  margin-bottom: 0;
+  box-shadow: none;
+  min-height: 69px;
+  padding: 7px 21px;
+  border-top: 1px solid rgba(0,0,0,0.05);
+}
+.widget-example .Card.Row .CardText {
+  font-size: 21px;
+  line-height: 40px;
+}
+.widget-example .CardTokenSymbol {
+  width: 40%;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.widget-example .CardTokenName {
+  text-align: right;
+  opacity: 0.5;
+  width: 60%;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.widget-example .Card.Row .CardTokenName .CardText {
+  font-size: 17px;
+}
+.widget-example .Card.Row .CardImage {
+  width: 40px;
+}
+.widget-example .Card.Row .CardImage img {
+  height: 30px;
+  width: 30px;
+}
+.widget-example a.Card, a.Card * {
+  color: inherit;
+  text-decoration: none;
+}
+.widget-example .Card.transparent {
+  background: none;
+  box-shadow: none;
+}
+.widget-example .Card.small {
+  min-height: auto;
+  padding: 8px 8px;
+  margin: 0;
+}
+.widget-example .CardImage.small {
+  width: 27px;
+}
+.widget-example .CardImage.small img {
+  height: 27px;
+  width: 27px;
+}
+.widget-example .Card.disabled {
+  cursor: default;
+}
+.widget-example .Card:hover:not(.disabled) {
+  background: rgb(240,240,240);
+  box-shadow: 0 0 0 rgba(0,0,0,0);
+}
+.widget-example .Card:active:not(.disabled) {
+  background: rgb(235,235,235);
+  box-shadow: inset 0 0 6px rgba(0,0,0,0.02);
+  color: inherit;
+}
+.widget-example .Card:hover:not(.disabled) .CardAction {
+  opacity: 0.4;
+}
+.widget-example .CardImage, .widget-example .CardBody, .widget-example .CardAction, .widget-example .CardInfo {
+  align-items: center;
+  display: flex;
+  min-width: 0;
+  padding: 0 7px;
+}
+.widget-example .CardImage {
+  flex-basis: auto;
+  flex-grow: 0;
+  flex-shrink: 0;
+  justify-content: center;
+  position: relative;
+  width: 58px;
+}
+.widget-example .CardBody {
+  flex-basis: auto;
+  flex-grow: 1;
+  flex-shrink: 1;
+  line-height: 27px;
+  padding-left: 10px;
+  text-align: left;
+}
+.widget-example .CardBodyWrapper {
+  min-width: 0;
+}
+.widget-example .CardAction {
+  flex-basis: auto;
+  flex-shrink: 0;
+  flex-grow: 0;
+  padding-right: 0;
+  margin-left: auto;
+}
+.widget-example .Card.disabled .CardAction {
+  opacity: 0;
+}
+.widget-example .CardInfo {
+  display: flex;
+  flex-basis: auto;
+  flex-direction: column;
+  flex-grow: 0;
+  flex-shrink: 1;
+  justify-content: center;
+  margin-left: auto;
+  padding-right: 0;
+}
+.widget-example .CardImage img {
+  background: white;
+  border-radius: 9999px;
+  border: 1px solid white;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  height: 45px;
+  position: relative;
+  vertical-align: middle;
+  width: 45px;
+}
+.widget-example .CardImage.square img {
+  border-radius: 0;
+}
+.widget-example .CardImage img.transparent {
+  border: none;
+  background: none;
+  box-shadow: none;
+}
+.widget-example .CardImage .BlockchainLogo {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+.widget-example .CardTitle {
+  font-size: 15px;
+  color: rgb(150,150,150);
+  line-height: 20px;
+}
+.widget-example .CardText, .widget-example a .CardText {
+  color: #212529;
+  flex: 1;
+  font-size: 21px;
+  line-height: 25px;
+}
+.widget-example .CardText strong {
+  font-weight: 500;
+}
+.widget-example .CardText.small, .widget-example .CardText.small small {
+  font-size: 18px;
+  color: rgb(150,150,150);
+  line-height: 20px;
+}
+.widget-example .CardAction {
+  opacity: 0.2;
+}
+.widget-example .Card.More {
+  display: inline-block;
+  text-align: center;
+}
+.widget-example .PoweredByWrapper {
+  display: block;
+  left: 0;
+  padding-top: 3px;
+  position: fixed;
+  right: 0;
+  text-align: center;
+  top: 0;
+}
+.widget-example .contained .PoweredByWrapper {
+  position: absolute;
+}
+.widget-example .PoweredByLink {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !important;
+  color: white;
+  opacity: 0.4;
+  display: inline-block;
+  font-size: 14px;
+  font-style: italic;
+  font-weight: bold;
+  letter-spacing: -0.2px;
+  margin-left: 8px;
+  text-decoration: none;
+}
+.widget-example .PoweredByLink:hover, .widget-example .PoweredByLink:active {
+  opacity: 1.0;
+  color: #ea357a;
+}
+.widget-example .GraphicWrapper {
+  display: block;
+}
+.widget-example .Graphic {
+  width: 50%;
+  position: relative;
+}
+.widget-example .Skeleton {
+  background: rgb(230,230,230) !important;
+  border: 0px solid transparent !important;
+  box-shadow: none !important;
+  cursor: inherit !important;
+  line-height: 0;
+  overflow: hidden;
+  position: relative;
+}
+@keyframes SkeletonBackgroundAnimation {
+  from {
+    left: -500px;
+  }
+  to {
+    left: +120%;
+  }
+}
+.widget-example .SkeletonBackground {
+  animation: 2s SkeletonBackgroundAnimation 0.2s ease infinite;
+  background: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.1) 50%, transparent 100%);
+  height: 100%;
+  left: -140%;
+  position: absolute;
+  top: 0;
+  width: 400px;
+}
+.widget-example .SkeletonWrapper {
+  line-height: 0;
+}
+.widget-example .TokenAmountRow {
+  min-width: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+.widget-example .TokenAmountRow.small {
+  font-size: 17px;
+  line-height: 17px;
+}
+.widget-example .TokenAmountRow.grey {
+  opacity: 0.5;
+}
+.widget-example .TokenAmountCell {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.widget-example .Text {
+  font-size: 16px;
+  line-height: 24px
+}
+.widget-example .TextLeft, .widget-example .TextLeft * {
+  text-align: left;
+}
+.widget-example .TextCenter, .widget-example .TextCenter * {
+  text-align: center;
+}
+.widget-example .LineHeightL {
+  line-height: 32px;
+}
+.widget-example .ErrorSnippetText {
+  background: rgb(30, 30, 20);
+  border-radius: 19px;
+  border: 8px solid rgb(30, 30, 20);
+  color: #00FF41;
+  font-size: 15px;
+  font-style: italic;
+  max-height: 100px;
+  padding: 6px;
+  overflow-wrap: break-word;
+  overflow-y: auto;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+.widget-example .FontSizeS {
+  font-size: 16px;
+}
+.widget-example .FontSizeM {
+  font-size: 19px;
+}
+.widget-example .FontSizeL {
+  font-size: 23px;
+}
+.widget-example .FontSizeXL {
+  font-size: 32px;
+}
+.widget-example .FontWeightBold {
+  font-weight: bold;
+}
+.widget-example .FontItalic {
+  font-style: italic;
+}
+.widget-example .Icon {
+  fill : #000000;
+  stroke : #000000;
+}
+.widget-example .ChevronLeft, .widget-example .ChevronRight {
+  position: relative;
+  top: 1px;
+}
+.widget-example .Checkmark {
+  height: 24px;
+  position: relative;
+  top: -1px;
+  vertical-align: middle;
+  width: 24px;
+}
+.widget-example .AlertIcon {
+  height: 20px;
+  position: relative;
+  top: -1px;
+  vertical-align: middle;
+  width: 20px;
+  fill: #e42626;
+  stroke: transparent;
+}
+.widget-example .CheckMark.small {
+  height: 16px;
+  width: 16px;
+}
+.widget-example .DigitalWalletIcon {
+  height: 24px;
+  position: relative;
+  top: -1px;
+  vertical-align: middle;
+  width: 24px;
+}
+.widget-example .ButtonPrimary .Icon {
+  fill : #ffffff;
+  stroke : #ffffff;
+}
+.widget-example .Loading {
+  border: 3px solid #ea357a;
+  border-top: 3px solid rgba(0,0,0,0.1);
+  border-radius: 100%;
+  position: relative;
+  left: -1px;
+  width: 18px;
+  height: 18px;
+  animation: spin 1.5s linear infinite;
+}
+.widget-example .Opacity05 {
+  opacity: 0.5;
+}
+.widget-example .PaddingTopXS {
+  padding-top: 3px;
+}
+.widget-example .PaddingRightXS {
+  padding-right: 3px;
+}
+.widget-example .PaddingBottomXS {
+  padding-bottom: 3px;
+}
+.widget-example .PaddingLeftXS {
+  padding-left: 3px;
+}
+.widget-example .PaddingTopS {
+  padding-top: 13px;
+}
+.widget-example .PaddingRightS {
+  padding-right: 13px;
+}
+.widget-example .PaddingBottomS {
+  padding-bottom: 13px;
+}
+.widget-example .PaddingLeftS {
+  padding-left: 13px;
+}
+.widget-example .PaddingTopM {
+  padding-top: 19px;
+}
+.widget-example .PaddingRightM {
+  padding-right: 19px;
+}
+.widget-example .PaddingBottomM {
+  padding-bottom: 19px;
+}
+.widget-example .PaddingLeftM {
+  padding-left: 19px;
+}
+.widget-example .PaddingTopL {
+  padding-top: 29px;
+}
+.widget-example .PaddingRightL {
+  padding-right: 29px;
+}
+.widget-example .PaddingBottomL {
+  padding-bottom: 29px;
+}
+.widget-example .PaddingLeftL {
+  padding-left: 29px;
+}
+.widget-example .MaxHeight {
+  max-height: 320px;
+  overflow-y: auto;
+}
+.widget-example .LoadingText .dot {
+  animation-name: blink;
+  animation-duration: 1.4s;
+  animation-iteration-count: infinite;
+  animation-fill-mode: both;
+}
+.widget-example .LoadingText .dot:nth-child(2) {
+  animation-delay: .2s;
+}
+.widget-example .LoadingText .dot:nth-child(3) {
+  animation-delay: .4s;
+}
+.widget-example .Input {
+  background: none;
+  border: 1px solid transparent;
+  margin: 0;
+  outline: none !important;
+  padding: 0 0 0 14px;
+  width: 100%;
+}
+.widget-example .Input::placeholder {
+  color: rgb(210,210,210);
+}
+.widget-example .TextButton {
+  cursor: pointer;
+  font-size: 16px;
+  color: #ea357a
+}
+.widget-example .TextButton:hover * {
+  opacity: 1.0;
+}
+.widget-example .MaxAmountImage {
+  display: inline-block;
+  padding-right: 6px;
+}
+.widget-example .MaxAmountImage img {
+  height: 16px;
+  width: 16px;
+  position: relative;
+  top: 3px;
+}
+.widget-example .BlockchainLogo {
+  border-radius: 999px;
+}
+.widget-example .BlockchainLogo.small {
+  height: 18px;
+  width: 18px;
+}
+.widget-example .Search {
+  border-radius: 13px;
+  border: 1px solid rgba(0,0,0,0.2);
+  outline: none !important;
+  color: #212529;
+  font-size: 19px;
+  padding: 13px;
+  width: 100%;
+}
+.widget-example .Search::placeholder {
+  color: rgb(180,180,180);
+}
+.widget-example .Search:focus, .widget-example .Search:focus-visible {
+  border: 1px solid #ea357a;
+}
+.widget-example .TokenImage img {
+  border-radius: 9999px;
+  border: 1px solid white;
+  background: white;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  height: 45px;
+  position: relative;
+  vertical-align: middle;
+  width: 45px;
+}
+.widget-example .TokenImage.medium img {
+  height: 93px;
+  width: 93px;
+}
+.widget-example .Alert {
+  background: rgba(0,0,0,0.08);
+  border-radius: 7px;
+  font-weight: 500;
+  padding: 8px;
+}
+.widget-example .Table {
+  border-collapse: separate;
+  border-radius: 7px;
+  border-style: hidden;
+  border: 1px solid rgba(0,0,0,0.1);
+  width: 100%;
+}
+.widget-example .Table tr.small td {
+  font-size: 14px;
+}
+.widget-example .Table tr td {
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+  word-break: break-all;
+}
+.widget-example .Table tr:last-child td {
+  border-bottom: none;
+}
+.widget-example .Table tr td {
+  padding: 8px 15px;
+  text-align: left;
+}
+.widget-example .Table tr td:first-child {
+  width: 30%
+}
+.widget-example .Table tr td:last-child {
+  width: 70%
+}
+.widget-example .Table .TableSubTitle {
+  font-weight: 300;
+  opacity: 0.7;
+}
+.widget-example .Table tr td:last-child {
+  font-weight: 500;
+}
+.widget-example .Link {
+  color: #ea357a;
+  cursor: pointer;
+  text-decoration: none;
+}
+.widget-example .Link:hover {
+  filter: brightness(0.8);
+}
+.widget-example .Link:active {
+  filter: brightness(1.0);
 }

@@ -11,7 +11,7 @@ class DePay_Payments_Run{
 
 	private function add_hooks(){
 
-		wp_register_style('depay-payments-frontend-style', DEPAYPAYMENTS_PLUGIN_URL . 'core/includes/assets/css/frontend.css', '1.1.4');
+		wp_register_style('depay-payments-frontend-style', DEPAYPAYMENTS_PLUGIN_URL . 'core/includes/assets/css/frontend.css', '1.2.0');
     wp_enqueue_style('depay-payments-frontend-style');
 
     wp_register_script(
@@ -57,9 +57,9 @@ class DePay_Payments_Run{
 	
 		add_action( 'admin_enqueue_scripts', array( 'DePay_Payments_Admin', 'add_scripts_and_styles' ));
 		add_action( 'admin_menu', array( 'DePay_Payments_Admin', 'add_admin_menu' ));
-		add_action( 'admin_init', array( 'DePay_Payments_Admin', 'add_admin_settings' ));
 		add_action( 'init', array( 'DePay_Payments_Block', 'register' ));
 		add_action( 'init', array( 'DePay_Payments_Link', 'register' ));
+		add_action( 'rest_api_init', array( 'DePay_Payments_Admin', 'register_rest_settings' ));
 		
 	}
 }

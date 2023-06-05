@@ -3,7 +3,7 @@ Contributors: depayfi
 Tags: payments, cryptocurrency, p2p, web3, depay
 Requires at least: 5.0
 Tested up to: 6.1
-Stable tag: 1.1.4
+Stable tag: 1.2.0
 Requires PHP: 5.6
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -28,35 +28,15 @@ A Block-enabled WordPress plugin for P2P cryptocurrency payments on multiple blo
 * **Custom CSS**: Customize the look of your payment button with your own CSS in the WordPress plugin dashboard.
 
 = Supported wallets =
-Your supporters can send you Web3 payments using the most popular crypto wallets:
 
-* Metamask
-* Coinbase Wallet
-* 100+ additional wallets via WalletConnect, **for example**:
-  * Trust Wallet
-  * DeFi Wallet by crypto.com
-  * 1inch Wallet
-  * imToken Wallet
-  * TokenPocket
-  * Pillar
-  * Math Wallet
-  * Ledger Live
-  * Argent Wallet
-  * AlphaWallet
-  * Unstoppable Wallet
-  * Atomic Wallet
-  * Rainbow 
-  * (...)
+DePay supports [most crypto wallets](https://depay.com/wallets).
 
 = Supported blockchains =
+
 * Ethereum
-* BNB Chain (previously "Binance Smart Chain")
+* BNB Smart Chain
 * Polygon
-* Solana (soon)
-
-= Pricing =
-
-1.5% transaction fee.
+* Solana
 
 = About DePay = 
 > [DePay](https://depay.com) pioneers Web3 Payments with the power of DeFi. 
@@ -79,6 +59,10 @@ Building on the idea that "Web3" is the next generation of a blockchain-based an
 * Your supporters can send you payments with any token they currently have in their wallets (e.g. ETH or any other token)
 * Once a transaction is sent, DePay's smart contracts convert the sender token (via decentralized liquidity pools such as Uniswap) into the tokens you have configured to be received. The payments arrive directly in your own wallet after the real-time conversion.
 
+= Pricing =
+
+1.5% transaction fee.
+
 == Screenshots ==
 
 1. Performing a Web3 Payment with DePay.
@@ -90,6 +74,9 @@ Building on the idea that "Web3" is the next generation of a blockchain-based an
 7. Customize the theme appearance with a live preview.
 
 == Changelog ==
+
+= 1.2.0 =
+* adds Solana support and one address per coin and ui to change button and widget style
 
 = 1.1.4 =
 * fixes some token amount display issues
