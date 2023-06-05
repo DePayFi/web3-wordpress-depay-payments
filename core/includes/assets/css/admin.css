@@ -16,7 +16,7 @@
   display: none;
 }
 
-.DePay_donations_accepted_payment tr td {
+.DePay_payments_accepted_payment tr td {
   display: flex;
   flex-direction: row;
 }

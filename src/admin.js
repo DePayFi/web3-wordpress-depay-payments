@@ -147,11 +147,11 @@
           setWidgetButtonText(response.DePay_payments_widget_color_button_text || "#FFFFFF")
           setAmount(response.DePay_payments_widget_amount_type || 'free')
           setDisplayedCurrency(response.DePay_payments_widget_display_currency)
-          setStartValue(response.DePay_payments_widget_amount_free_start)
-          setMinValue(response.DePay_payments_widget_amount_free_min)
-          setStepValue(response.DePay_payments_widget_amount_free_step)
+          setStartValue(response.DePay_payments_widget_amount_free_start || 1)
+          setMinValue(response.DePay_payments_widget_amount_free_min || 1)
+          setStepValue(response.DePay_payments_widget_amount_free_step || 1)
           setAmountCurrency(response.DePay_payments_widget_amount_currency || 'USD')
-          setFixAmount(response.DePay_payments_widget_fix_amount)
+          setFixAmount(response.DePay_payments_widget_fix_amount || 1)
           setWidgetIconColor()
           setWidgetText()
           setSettingsAreLoaded(true)
@@ -365,19 +365,19 @@
                     <div>
                       <div style={{ marginBottom: "0.8rem" }}>
                         <label style={{ display: "flex", alignItems: "center" }}>
-                          <input placeholder="Start Value" style={{ marginRight: "0.8rem" }} type="number" value={ startValue } onChange={(event)=>setStartValue(event.target.value)}/>
+                          <input required="required" placeholder="Start Value" style={{ marginRight: "0.8rem" }} type="number" value={ startValue } onChange={(event)=>setStartValue(event.target.value)}/>
                           Start Value
                         </label>
                       </div>
                       <div style={{ marginBottom: "0.8rem" }}>
                         <label style={{ display: "flex", alignItems: "center" }}>
-                          <input placeholder="Min Value" style={{ marginRight: "0.8rem" }} type="number" value={ minValue } onChange={(event)=>setMinValue(event.target.value)}/>
+                          <input required="required" placeholder="Min Value" style={{ marginRight: "0.8rem" }} type="number" value={ minValue } onChange={(event)=>setMinValue(event.target.value)}/>
                           Min Value
                         </label>
                       </div>
                       <div style={{ marginBottom: "0.8rem" }}>
                         <label style={{ display: "flex", alignItems: "center" }}>
-                          <input placeholder="Step Value" style={{ marginRight: "0.8rem" }} type="number" value={ stepValue } onChange={(event)=>setStepValue(event.target.value)}/>
+                          <input required="required" placeholder="Step Value" style={{ marginRight: "0.8rem" }} type="number" value={ stepValue } onChange={(event)=>setStepValue(event.target.value)}/>
                           Step Value
                         </label>
                       </div>
