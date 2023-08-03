@@ -14,7 +14,7 @@
  * Plugin Name:   DePay Payments
  * Plugin URI:    https://depay.com/plugins/wordpress
  * Description:   Web3 payments directly into your own wallet. Block-enabled Wordpress plugin for P2P cryptocurrency payments on multiple blockchains, with on-the-fly token conversion.
- * Version:       1.2.5
+ * Version:       1.3.0
  * License:       GPL-2.0+
  * License URI:   http://www.gnu.org/licenses/gpl-2.0.txt
  * Author:        DePay
@@ -29,7 +29,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 define( 'DEPAYPAYMENTS_NAME',      'DePay Payments' );
 
 // Plugin version
-define( 'DEPAYPAYMENTS_VERSION',   '1.2.5' );
+define( 'DEPAYPAYMENTS_VERSION',   '1.3.0' );
 
 // Plugin Root File
 define( 'DEPAYPAYMENTS_PLUGIN_FILE', __FILE__ );
