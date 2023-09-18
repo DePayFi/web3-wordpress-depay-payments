@@ -221,12 +221,16 @@
                       <table key={ `${index}-${payment.blockchain}-${payment.symbol}` } className="wp-list-table widefat fixed striped table-view-list page" style={{ maxWidth: "600px", marginBottom: "0.4rem"}}>
                         <tr>
                           <td style={{ padding: "1rem 1rem 0.4rem 1rem", display: "flex" }}>
-                            <img src={ payment.logo } style={{ background: "white", borderRadius: "99px", height: "3rem", width: "3rem" }}/>
+                            <div>
+                              <div style={{ position: 'relative', display: 'block' }}>
+                                <img src={ payment.logo } style={{ background: "white", borderRadius: "99px", height: "3rem", width: "3rem" }}/>
+                                <img src={ Web3Blockchains[payment.blockchain].logo } style={{ position: 'absolute', bottom: '2px', right: '0px', width: "20px", height: "20px", border: "1px solid white", borderRadius: "4px", backgroundColor: Web3Blockchains[payment.blockchain].logoBackgroundColor }}/>
+                              </div>
+                            </div>
                             <div style={{ paddingLeft: "1rem", paddingBottom: "0.3rem", flex: 1 }}>
-                              <div style={{ display: 'flex', justifyontent: 'space-between' }}>
+                              <div style={{ display: 'flex', justifyontent: 'space-between', fontSize: '1rem' }}>
                                 <div>
                                   <strong>{ payment.symbol }</strong> ({ payment.name }) on { Web3Blockchains[payment.blockchain].label }
-                                  <img src={ Web3Blockchains[payment.blockchain].logo } style={{ position: 'relative', top: '3px', left: '5px', width: "18px", height: "18px", borderRadius: "99px", background: "white" }}/>
                                 </div>
                                 <div className="row-actions visible" style={{ marginLeft: "auto" }}>
                                   <span className="delete">

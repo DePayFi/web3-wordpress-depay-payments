@@ -3,7 +3,7 @@ Contributors: depayfi
 Tags: payments, cryptocurrency, p2p, web3, depay
 Requires at least: 5.0
 Tested up to: 6.3
-Stable tag: 1.3.3
+Stable tag: 2.0.0
 Requires PHP: 5.6
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -37,6 +37,12 @@ DePay supports [most crypto wallets](https://depay.com/wallets).
 * BNB Smart Chain
 * Polygon
 * Solana
+* Fantom
+* Gnosis
+* Avalanche
+* Arbitrum
+* Optimism
+* Base
 
 = About DePay = 
 > [DePay](https://depay.com) pioneers Web3 Payments with the power of DeFi. 
@@ -74,6 +80,9 @@ Building on the idea that "Web3" is the next generation of a blockchain-based an
 7. Customize the theme appearance with a live preview.
 
 == Changelog ==
+
+= 2.0.0 =
+* DePay v2: 6 new blockchains + lots of other improvements
 
 = 1.3.3 =
 * fixes WalletConnect v2 issue
