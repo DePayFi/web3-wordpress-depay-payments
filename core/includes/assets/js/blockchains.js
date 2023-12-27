@@ -165,7 +165,7 @@
   };
 
   const logo$6 = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAwIDEwMDAiIHhtbDpzcGFjZT0icHJlc2VydmUiPjxwYXRoIGQ9Ik0xMzEuNSA0NTkuM2MtMTQuNCA5LjYtMjQgMjQtMjQgNDMuMnYxOTQuNGMwIDE5LjIgOS42IDM2IDI0IDQzLjJsMTY1LjYgOTZjMTQuNCA5LjYgMzMuNiA5LjYgNDggMGwxNjUuNi05NmMxNC40LTkuNiAyNC0yNCAyNC00My4ydi02OS42bC03Ni44LTQzLjJ2NjQuOGMwIDE5LjItOS42IDM2LTI0IDQzLjJsLTg2LjQgNTIuOGMtMTQuNCA5LjYtMzMuNiA5LjYtNDggMGwtODYuNC01MC40Yy0xNC40LTkuNi0yNC0yNC0yNC00My4yVjU1MC41YzAtMTkuMiA5LjYtMzYgMjQtNDMuMmw4OC44LTUwLjRjMTQuNC05LjYgMzMuNi05LjYgNDggMGwxMTIuOCA2NC44IDc2LjggNDUuNiAxMTIuOCA2NC44YzE0LjQgOS42IDMzLjYgOS42IDQ4IDBsMTY4LTk2YzE0LjQtOS42IDI0LTI0IDI0LTQzLjJ2LTE5MmMwLTE0LjQtOS42LTMxLjItMjQtNDAuOGwtMTY4LTk2Yy0xNC40LTkuNi0zMy42LTkuNi00OCAwbC0xNjUuNiA5NmMtMTQuNCA5LjYtMjQgMjQtMjQgNDMuMnY2OS42bDc2LjggNDUuNnYtNjkuNmMwLTE5LjIgOS42LTM2IDI0LTQzLjJsODguOC01Mi44YzE0LjQtOS42IDMzLjYtOS42IDQ4IDBsODguOCA1MC40YzE0LjQgOS42IDI0IDI0IDI0IDQzLjJ2MTAwLjhjMCAxOS4yLTEyIDM2LTI0IDQzLjJsLTg4LjggNTIuOGMtMTQuNCA5LjYtMzMuNiA5LjYtNDggMGwtMTEyLjgtNjkuNi03OS4yLTQzLjItMTE3LjYtNjkuNmMtMTQuNC05LjYtMzMuNi05LjYtNDggMCAwIDIuNC0xNjAuOCA5OC40LTE2My4yIDk4LjR6IiBmaWxsPSIjZmZmIi8+PC9zdmc+';
-  const currencyLogo$3 = "https://app.uniswap.org/static/media/matic-token-icon.da7b877d41122a55de4a43760bb4c8e5.svg";
+  const currencyLogo$3 = "https://raw.githubusercontent.com/Uniswap/assets/master/blockchains/polygon/info/logo.png";
   const wrappedLogo$2 = "https://raw.githubusercontent.com/Uniswap/assets/master/blockchains/polygon/assets/0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270/logo.png";
 
   var polygon = {
@@ -200,7 +200,7 @@
     },
     endpoints: [ // make sure provider supports batch size of 99 batch requests!
       'https://polygon-rpc.com',
-      'https://poly-rpc.gateway.pokt.network',
+      'https://polygon.meowrpc.com',
       'https://polygon.llamarpc.com'
     ],
     tokens: [ // only major tokens
@@ -252,7 +252,7 @@
     endpoints: [
       'https://solana-mainnet.phantom.app/YBPpkkN4g91xDiAnTE9r0RcMkjg0sKUIWvAfoFVJ',
       'https://mainnet-beta.solflare.network',
-      'https://solana-mainnet.rpc.extrnode.com'
+      'https://swr.xnftdata.com/rpc-proxy'
     ],
     sockets: [
       'wss://solana-mainnet.phantom.app/YBPpkkN4g91xDiAnTE9r0RcMkjg0sKUIWvAfoFVJ',
