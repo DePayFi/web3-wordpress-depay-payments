@@ -90,14 +90,18 @@ class DePay_Payments_Block {
       $wrapper_attributes
     );
 
-    wp_register_style('depay-payments-frontend-style', DEPAYPAYMENTS_PLUGIN_URL . 'core/includes/assets/css/frontend.css', '2.1.4');
+    wp_register_style('depay-payments-frontend-style', DEPAYPAYMENTS_PLUGIN_URL . 'core/includes/assets/css/frontend.css', '2.2.1');
     wp_enqueue_style('depay-payments-frontend-style');
 
     wp_register_script(
       'depay-payments-widgets',
       DEPAYPAYMENTS_PLUGIN_URL . 'core/includes/assets/js/widgets.bundle.js',
       array(),
-      DEPAYPAYMENTS_PLUGIN_URL . 'core/includes/assets/js/widgets.bundle.js'
+      DEPAYPAYMENTS_VERSION,
+      array(
+        'in_footer' => true,
+        'strategy' => 'defer'
+      )
     );
     wp_enqueue_script( 'depay-payments-widgets' );
 
@@ -105,7 +109,11 @@ class DePay_Payments_Block {
       'depay-payments-react-shadow-dom',
       DEPAYPAYMENTS_PLUGIN_URL . 'core/includes/assets/js/react-shadow-dom.js',
       ['wp-element'],
-      DEPAYPAYMENTS_PLUGIN_URL . 'core/includes/assets/js/react-shadow-dom.js'
+      DEPAYPAYMENTS_VERSION,
+      array(
+        'in_footer' => true,
+        'strategy' => 'defer'
+      )
     );
     wp_enqueue_script( 'depay-payments-react-shadow-dom' );
 
@@ -113,7 +121,11 @@ class DePay_Payments_Block {
       'depay-payments-blockchains',
       DEPAYPAYMENTS_PLUGIN_URL . 'core/includes/assets/js/blockchains.js',
       ['wp-element'],
-      DEPAYPAYMENTS_PLUGIN_URL . 'core/includes/assets/js/blockchains.js'
+      DEPAYPAYMENTS_VERSION,
+      array(
+        'in_footer' => true,
+        'strategy' => 'defer'
+      )
     );
     wp_enqueue_script( 'depay-payments-blockchains' );
 
@@ -121,7 +133,11 @@ class DePay_Payments_Block {
       'depay-payments-buttons',
       DEPAYPAYMENTS_PLUGIN_URL . 'core/includes/assets/js/buttons.js',
       ['wp-element'],
-      DEPAYPAYMENTS_PLUGIN_URL . 'core/includes/assets/js/buttons.js'
+      DEPAYPAYMENTS_VERSION,
+      array(
+        'in_footer' => true,
+        'strategy' => 'defer'
+      )
     );
     wp_enqueue_script( 'depay-payments-buttons' );
 
@@ -129,8 +145,11 @@ class DePay_Payments_Block {
       'depay-payments-init-buttons',
       DEPAYPAYMENTS_PLUGIN_URL . 'core/includes/assets/js/init-buttons.js',
       [],
-      DEPAYPAYMENTS_PLUGIN_URL . 'core/includes/assets/js/init-buttons.js',
-      true
+      DEPAYPAYMENTS_VERSION,
+      array(
+        'in_footer' => true,
+        'strategy' => 'defer'
+      )
     );
     wp_enqueue_script( 'depay-payments-init-buttons' );
 
