@@ -250,12 +250,12 @@
       if(address) { return `https://solscan.io/address/${address}` }
     },
     endpoints: [
-      'https://solana-mainnet.phantom.app/YBPpkkN4g91xDiAnTE9r0RcMkjg0sKUIWvAfoFVJ',
+      'https://solana.drpc.org',
       'https://mainnet-beta.solflare.network',
       'https://swr.xnftdata.com/rpc-proxy'
     ],
     sockets: [
-      'wss://solana-mainnet.phantom.app/YBPpkkN4g91xDiAnTE9r0RcMkjg0sKUIWvAfoFVJ',
+      'wss://solana.drpc.org',
       'wss://mainnet-beta.solflare.network'
     ],
     tokens: [ // only major tokens
