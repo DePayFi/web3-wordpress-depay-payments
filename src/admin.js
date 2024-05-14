@@ -117,6 +117,18 @@
     }
 
     useEffect(()=>{
+      if(amountCurrency != undefined && amountCurrency?.length < 3) {
+        setAmountCurrency()
+      }
+    },[amountCurrency])
+
+    useEffect(()=>{
+      if(displayedCurrency != undefined && displayedCurrency?.length < 3) {
+        setDisplayedCurrency()
+      }
+    },[displayedCurrency])
+
+    useEffect(()=>{
       updateButtonStyle()
     },[buttonRadius, buttonText, buttonBackground])
 
