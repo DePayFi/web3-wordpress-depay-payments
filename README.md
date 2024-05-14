@@ -21,7 +21,11 @@ https://web3wordpress.xyz/
 In order to release the plugins simply push a git tag:
 
 ```
+git commit
+```
+
+```
 git push
-git tag 2.3.6
-git push origin 2.3.6
+git tag 2.3.7
+git push origin 2.3.7
 ```
