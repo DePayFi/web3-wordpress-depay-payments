@@ -145,8 +145,8 @@
           setWidgetPrimary(response.DePay_payments_widget_color_primary || "#32373c")
           setWidgetButtonRadius(response.DePay_payments_widget_button_border_radius || "2")
           setWidgetButtonText(response.DePay_payments_widget_color_button_text || "#FFFFFF")
-          setAmount(response.DePay_payments_widget_amount_type || 'free')
-          setDisplayedCurrency(response.DePay_payments_widget_display_currency)
+          setAmount(response.DePay_payments_widget_amount_type || 'fix')
+          setDisplayedCurrency(response.DePay_payments_widget_display_currency?.length > 2 ? response.DePay_payments_widget_display_currency : 'local')
           setStartValue(response.DePay_payments_widget_amount_free_start || 1)
           setMinValue(response.DePay_payments_widget_amount_free_min || 1)
           setStepValue(response.DePay_payments_widget_amount_free_step || 1)
@@ -172,11 +172,11 @@
 
       if(amount === 'fix') {
 
-        LocalCurrency.Currency.rate({ from: amountCurrency, to: 'USD' }).then((rate)=>{
+        LocalCurrency.Currency.rate({ from: amountCurrency || 'USD', to: 'USD' }).then((rate)=>{
           setUsdValue((fixAmount/rate).toFixed(2))
         })
 
-        LocalCurrency.Currency.rate({ from: amountCurrency, to: (displayedCurrency === 'local') ? undefined : displayedCurrency }).then((rate)=>{
+        LocalCurrency.Currency.rate({ from: amountCurrency || 'USD', to: (displayedCurrency === 'local') ? undefined : displayedCurrency }).then((rate)=>{
           setDisplayedCurrencyExample(new LocalCurrency.Currency({ amount: fixAmount/rate, code: (displayedCurrency === 'local') ? undefined : displayedCurrency }).toString())
         })
 
@@ -444,7 +444,8 @@
                       }
                       { isDisabled &&
                         <div className="notice inline notice-warning notice-alt" style={{ marginBottom: 0, maxWidth: '300px' }}>
-                          Please fix all errors before saving!
+                          { payments?.length > 0 && <span>Please fix all errors before saving!</span> }
+                          { payments?.length == 0 && <span>Please add at least one token as accepted payment!</span> }
                         </div>
                       }
                       { !saved &&
