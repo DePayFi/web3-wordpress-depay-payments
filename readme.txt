@@ -3,7 +3,7 @@ Contributors: depayfi
 Tags: payments, cryptocurrency, p2p, web3, depay
 Requires at least: 5.0
 Tested up to: 6.5
-Stable tag: 2.3.3
+Stable tag: 2.3.4
 Requires PHP: 5.6
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -81,7 +81,7 @@ Building on the idea that "Web3" is the next generation of a blockchain-based an
 
 == Changelog ==
 
-= 2.3.3 =
+= 2.3.4 =
 * fixes saving settings in admin
 
 = 2.3.1 =

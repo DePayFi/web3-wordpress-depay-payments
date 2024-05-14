@@ -28,7 +28,7 @@
     const [ startValue, setStartValue ] = useState()
     const [ minValue, setMinValue ] = useState()
     const [ stepValue, setStepValue ] = useState()
-    const [ amountCurrency, setAmountCurrency ] = useState('USD')
+    const [ amountCurrency, setAmountCurrency ] = useState()
     const [ fixAmount, setFixAmount ] = useState()
     const [ usdValue, setUsdValue ] = useState()
     
@@ -117,18 +117,6 @@
     }
 
     useEffect(()=>{
-      if(amountCurrency != undefined && amountCurrency?.length < 3) {
-        setAmountCurrency()
-      }
-    },[amountCurrency])
-
-    useEffect(()=>{
-      if(displayedCurrency != undefined && displayedCurrency?.length < 3) {
-        setDisplayedCurrency()
-      }
-    },[displayedCurrency])
-
-    useEffect(()=>{
       updateButtonStyle()
     },[buttonRadius, buttonText, buttonBackground])
 
@@ -148,7 +136,7 @@
             })
             setPayments(response.DePay_payments_accepted_payments)
           }
-          setLabel(response.DePay_payments_button_label || 'Support Us')
+          setLabel(response.DePay_payments_button_label || 'Pay')
           setButtonCss(response.DePay_payments_button_css || "button {\n  border-radius: 2px;\n  color: #FFFFFF;\n  background: #32373c;\n}")
           setWidgetCss(response.DePay_payments_widget_css || ".ButtonPrimary {border-radius: 2px;}")
           setButtonBackground(response.DePay_payments_button_background_color || "#32373c")
@@ -196,13 +184,16 @@
 
         setDisplayedCurrencyExample(new LocalCurrency.Currency({ amount: startValue || 1, code: (displayedCurrency === 'local') ? undefined : displayedCurrency }).toString())
 
-        if(displayedCurrency === 'local' || displayedCurrency === undefined) {
+        if(displayedCurrency === 'local' || displayedCurrency === undefined || displayedCurrency?.length < 3) {
           LocalCurrency.Currency.rate({ from: new LocalCurrency.Currency({ amount: 0 }).code, to: 'USD' }).then((rate)=>{
             setUsdValue(((startValue || 1)/rate).toFixed(2))
           })
         } else {
-          LocalCurrency.Currency.rate({ from: displayedCurrency, to: 'USD' }).then((rate)=>{
-            setUsdValue(((startValue || 1)/rate).toFixed(2))
+          LocalCurrency.Currency.rate({ 
+            from: 'USD',
+            to: displayedCurrency?.length >= 2 ? displayedCurrency : undefined,
+          }).then((rate)=>{
+            setUsdValue(((startValue || 1)*rate).toFixed(2))
           })
         }
       }
