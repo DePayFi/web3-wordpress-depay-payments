@@ -28,7 +28,7 @@
     const [ startValue, setStartValue ] = useState()
     const [ minValue, setMinValue ] = useState()
     const [ stepValue, setStepValue ] = useState()
-    const [ amountCurrency, setAmountCurrency ] = useState()
+    const [ amountCurrency, setAmountCurrency ] = useState('USD')
     const [ fixAmount, setFixAmount ] = useState()
     const [ usdValue, setUsdValue ] = useState()
     
@@ -150,7 +150,7 @@
           setStartValue(response.DePay_payments_widget_amount_free_start || 1)
           setMinValue(response.DePay_payments_widget_amount_free_min || 1)
           setStepValue(response.DePay_payments_widget_amount_free_step || 1)
-          setAmountCurrency(response.DePay_payments_widget_amount_currency || 'USD')
+          setAmountCurrency(response.DePay_payments_widget_amount_currency?.length > 0 ? response.DePay_payments_widget_amount_currency : 'USD')
           setFixAmount(response.DePay_payments_widget_fix_amount || 1)
           setWidgetIconColor()
           setWidgetText()

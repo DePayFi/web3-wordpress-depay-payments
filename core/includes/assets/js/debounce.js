@@ -1,5 +1,3 @@
-const nativeMax = Math.max;
-const nativeMin = Math.min;
 function debounce(func, wait, options) {
   let lastArgs,
     lastThis,
@@ -19,7 +17,7 @@ function debounce(func, wait, options) {
     leading = !!options.leading;
     maxing = 'maxWait' in options;
     maxWait = maxing
-      ? nativeMax(Number(options.maxWait) || 0, wait)
+      ? Math.max(Number(options.maxWait) || 0, wait)
       : maxWait;
     trailing = 'trailing' in options
       ? !!options.trailing
@@ -53,7 +51,7 @@ function debounce(func, wait, options) {
       result = wait - timeSinceLastCall;
     console.log('remainingWait');
     return maxing
-      ? nativeMin(result, maxWait - timeSinceLastInvoke)
+      ? Math.min(result, maxWait - timeSinceLastInvoke)
       : result;
   }
 
