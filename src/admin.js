@@ -127,7 +127,7 @@
     useEffect(()=>{
       wp.api.loadPromise.then(() => {
         const settings = new wp.api.models.Settings()
-        settings.fetch().then((response)=> {
+        settings.fetch({ cache: 'no-cache' }).then((response)=> {
           if(response.DePay_payments_accepted_payments) {
             response.DePay_payments_accepted_payments.forEach((payment)=>{
               if(payment.receiver === undefined && response.DePay_payments_receiving_wallet_address) {
