@@ -250,13 +250,15 @@
       if(address) { return `https://solscan.io/address/${address}` }
     },
     endpoints: [
-      'https://solana.drpc.org',
+      'https://swr.xnftdata.com/rpc-proxy',
+      'https://solana-rpc.publicnode.com',
       'https://mainnet-beta.solflare.network',
-      'https://swr.xnftdata.com/rpc-proxy'
+      'https://endpoints.omniatech.io/v1/sol/mainnet/public'
     ],
     sockets: [
       'wss://solana.drpc.org',
-      'wss://mainnet-beta.solflare.network'
+      'wss://mainnet-beta.solflare.network',
+      'wss://solana.a.exodus.io'
     ],
     tokens: [ // only major tokens
       {"address": "11111111111111111111111111111111", "symbol": "SOL", "name": "Solana", "decimals": 9, "logo": currencyLogo$2, "type": "NATIVE"},

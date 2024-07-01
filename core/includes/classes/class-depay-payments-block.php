@@ -90,7 +90,7 @@ class DePay_Payments_Block {
       $wrapper_attributes
     );
 
-    wp_register_style('depay-payments-frontend-style', DEPAYPAYMENTS_PLUGIN_URL . 'core/includes/assets/css/frontend.css', '2.3.9');
+    wp_register_style('depay-payments-frontend-style', DEPAYPAYMENTS_PLUGIN_URL . 'core/includes/assets/css/frontend.css', '2.3.10');
     wp_enqueue_style('depay-payments-frontend-style');
 
     wp_register_script(
