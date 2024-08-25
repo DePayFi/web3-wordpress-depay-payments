@@ -1,8 +1,8 @@
 {
   "name": "@depay/web3-wordpress-depay-payments",
   "moduleName": "WordpressDePayPayments",
-  "version": "2.4.1",
-  "description": "Web3 payments directly into your own wallet. A Block-enabled WordPress plugin for P2P cryptocurrency payments on multiple blockchains.",
+  "version": "2.4.2",
+  "description": "Accept Web3 payments, including thousands of cryptocurrency tokens, with the DePay Payments extension for Wordpress. MetaMask, Phantom, USDC, USDT, ETH, SOL, BSC, POL, xDAI...",
   "main": "./dist/umd/index.js",
   "module": "./dist/esm/index.js",
   "files": [
