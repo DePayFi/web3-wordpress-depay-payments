@@ -3,7 +3,7 @@ Contributors: depayfi
 Tags: payments, cryptocurrency, p2p, web3, depay
 Requires at least: 5.0
 Tested up to: 6.6
-Stable tag: 2.4.0
+Stable tag: 2.4.1
 Requires PHP: 5.6
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -43,18 +43,22 @@ DePay supports [most crypto wallets](https://depay.com/wallets).
 
 == Frequently Asked Questions ==
 
-= What are "Web3 payments"? =
-Building on the idea that "Web3" is the next generation of a blockchain-based and therefore decentralized Internet, "Web3 payments" are a new type of P2P payments. Besides being decentralized and peer-to-peer, they are also characterized by being "permissionless" and not requiring you to trust ("trustless") in centralized entities such as intermediaries. Furthermore, Web3 payments are censorship-resistant. "Open source" code can often be an indicator of Web3 technologies. Read more: [What are Web3 Payments?](https://depay.com/web3-payments).
+== What are "Web3 Payments"? ==
 
-= How does "on-the-fly" conversion work? =
+Building on the idea that "Web3" is the next generation of a blockchain-based and therefore decentralized Internet, "Web3 payments" are a new type of direct wallet-to-wallet payments that you can receive directly into your own crypto wallet.
+Besides being decentralized and peer-to-peer, they are also characterized by being "permissionless" and not requiring you to trust ("trustless") in centralized entities such as intermediaries.
+Furthermore, Web3 payments are censorship-resistant. Read more: [What are Web3 Payments?](https://depay.com/web3-payments).
+
+== How does "on-the-fly" conversion work? ==
+
 * You configure which tokens you want to receive (e.g. USDT, BUSD) per blockchain
 * Website visitors can make payments with any token they currently have in their wallets (e.g. ETH or any other token)
 * DePay's smart contracts auto-converts the payment into the tokens you have configured to be received.
 * The payments always arrive directly in your own wallet.
 
-= Pricing =
+== Pricing ==
 
-1.5% transaction fee.
+Start for free. Pay-as-you-go 1.5% per transaction.
 
 == Screenshots ==
 
@@ -67,6 +71,9 @@ Building on the idea that "Web3" is the next generation of a blockchain-based an
 7. Customize the theme appearance with a live preview.
 
 == Changelog ==
+
+= 2.4.1 =
+* fix plugin description
 
 = 2.4.0 =
 * introduces individual payment settings per block
