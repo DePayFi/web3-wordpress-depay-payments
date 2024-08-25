@@ -3,15 +3,15 @@ Contributors: depayfi
 Tags: payments, cryptocurrency, web3, DePay, USDC
 Requires at least: 5.0
 Tested up to: 6.6
-Stable tag: 2.4.3
+Stable tag: 2.4.4
 Requires PHP: 5.6
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Accept Web3 payments, including thousands of cryptocurrency tokens, with the DePay Payments extension for Wordpress. MetaMask, Phantom, USDC, USDT, ETH, SOL, BSC, POL, xDAI...
+Accept Web3 payments, supporting various cryptocurrency tokens and wallets, with the DePay Payments extension for Wordpress. MetaMask, Phantom, USDC, USDT, ETH, SOL, BSC, POL, xDAI...
 
 == Description ==
-**Accept Web3 payments, including thousands of cryptocurrency tokens, with the DePay Payments extension for Wordpress. MetaMask, Phantom, USDC, USDT, ETH, SOL, BSC, POL, xDAI...**
+**Accept Web3 payments, supporting various cryptocurrency tokens and wallets, with the DePay Payments extension for Wordpress. MetaMask, Phantom, USDC, USDT, ETH, SOL, BSC, POL, xDAI...**
 
 A Block-enabled WordPress plugin for Web3, onchain, cryptocurrency payments supporting various blockchains and tokens (auto-conversion).
 
@@ -72,7 +72,7 @@ Start for free. Pay-as-you-go 1.5% per transaction.
 
 == Changelog ==
 
-= 2.4.3 =
+= 2.4.4 =
 * fix plugin description
 
 = 2.4.0 =

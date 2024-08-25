@@ -26,6 +26,6 @@ git commit
 
 ```
 git push
-git tag 2.4.3
-git push origin 2.4.3
+git tag 2.4.4
+git push origin 2.4.4
 ```
