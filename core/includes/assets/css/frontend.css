@@ -1,5 +1,5 @@
-.wp-block-depay-payments-block {
-
+.wp-block-depay-payments-block, .wp-block-depay-payments-block * {
+  outline: none !important;
 }
 
 .wp-block-depay-payments-block.align_right {
@@ -14,3 +14,14 @@
   float: left;
 }
 
+.wp-block-depay-payments-block-settings {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  background: black;
+  box-shadow: 0 0 8px rgba(0,0,0,0.2);
+  border-radius: 5px;
+  padding: 4px;
+  color: white;
+  font-size: 12px;
+}

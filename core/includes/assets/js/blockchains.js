@@ -252,13 +252,12 @@
     endpoints: [
       'https://swr.xnftdata.com/rpc-proxy',
       'https://solana-rpc.publicnode.com',
-      'https://mainnet-beta.solflare.network',
       'https://endpoints.omniatech.io/v1/sol/mainnet/public'
     ],
     sockets: [
       'wss://solana.drpc.org',
       'wss://mainnet-beta.solflare.network',
-      'wss://solana.a.exodus.io'
+      'wss://solana-rpc.publicnode.com'
     ],
     tokens: [ // only major tokens
       {"address": "11111111111111111111111111111111", "symbol": "SOL", "name": "Solana", "decimals": 9, "logo": currencyLogo$2, "type": "NATIVE"},

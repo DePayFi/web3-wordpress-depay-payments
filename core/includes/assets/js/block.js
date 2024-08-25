@@ -36,13 +36,26 @@
 	    align: {
 	      type: "string",
 	      default: "center"
-	    }
+	    },
+	    paymentSettings: {
+        type: 'string',
+        default: '',
+      },
+      paymentAmountType: {
+        type: 'string',
+        default: '',
+      },
+	    paymentAmount: {
+        type: 'string',
+        default: '',
+      },
 	  },
 		icon,
 		keywords: [ "payments", "cryptocurrency", "p2p", "web3", "depay" ],
 		category: 'widgets',
 		example: {},
 		edit: function (props) {
+			console.log('props.attributes', props.attributes)
 			if(!DePay_payments_accepted_payments || DePay_payments_accepted_payments[0] == '' || !DePay_payments_receiving_wallet_address){
 				return wp.element.createElement(
             'a',
@@ -71,14 +84,76 @@
 					css: DePay_payments_widget_css
 				},
 			}
+
+			return wp.element.createElement(
+			    wp.element.Fragment,
+			    null,
+			    wp.element.createElement(
+			        wp.blockEditor.InspectorControls,
+			        null,
+			        wp.element.createElement(
+			            wp.components.PanelBody,
+			            { title: "Payment" },
+			            // Settings field (Dropdown)
+			            wp.element.createElement(wp.components.SelectControl, {
+			                label: "Settings",
+			                value: props.attributes.paymentSettings,
+			                options: [
+			                    { label: "Global settings", value: "global" },
+			                    { label: "Custom settings for this block", value: "local" }
+			                ],
+			                onChange: function (value) {
+			                    props.setAttributes({ paymentSettings: value, paymentAmountType: props.attributes.paymentAmountType ? props.attributes.paymentAmountType : 'fixed', paymentAmount: props.attributes.paymentAmount ? props.attributes.paymentAmount : '1' });
+			                }
+			            }),
+			            // Amount Type field (Dropdown) - Visible only if local settings is selected
+			            props.attributes.paymentSettings === "local" &&
+			            wp.element.createElement(wp.components.SelectControl, {
+			                label: "Type",
+			                value: props.attributes.paymentAmountType,
+			                options: [
+			                    { label: "I want to set a fixed amount", value: "fixed" },
+			                    { label: "Users can select the amount", value: "free" }
+			                ],
+			                onChange: function (value) {
+			                    props.setAttributes({ paymentAmountType: value });
+			                }
+			            }),
+			            // Payment Amount field - Visible only if "fixed" is selected
+			            props.attributes.paymentSettings === "local" && props.attributes.paymentAmountType === "fixed" &&
+			            wp.element.createElement(wp.components.TextControl, {
+			                label: "Amount (" + window?.DePay_payments_widget_amount_currency + ")",
+			                value: props.attributes.paymentAmount,
+			                onChange: function (value) {
+			                    props.setAttributes({ paymentAmount: value });
+			                },
+			                type: "number",
+			                step: "1"
+			            })
+			        )
+			    ),
+			    // New div to display paymentAmountType and paymentAmount
+			    props.attributes.paymentSettings == 'local'  ? wp.element.createElement(
+			        'div',
+			        {
+			        	className: 'wp-block-depay-payments-block-settings',
+			        },
+			        [props.attributes.paymentAmountType == 'fixed' ? new LocalCurrency.Currency({amount: props.attributes.paymentAmount, code: window?.DePay_payments_widget_amount_currency}).toString() : 'Amount selectable'].filter(Boolean).join(' '),
+			    ) : null,
+			    // Payment Button (Placeholder - Pointer Events Disabled)
+			    wp.element.createElement(
+			        'div',
+			        { style: { pointerEvents: 'none' } },
+			        wp.element.createElement(DePayButtons.DePayButton, {
+			            label: DePay_payments_button_label,
+			            widget: 'Payment',
+			            css: DePay_payments_button_css,
+			            configuration
+			        })
+			    )
+			);
+
 			
-			let element = React.createElement('div', { style: { pointerEvents: 'none' } }, React.createElement(DePayButtons.DePayButton, {
-	      label: DePay_payments_button_label,
-	      widget: 'Payment',
-	      css: DePay_payments_button_css,
-	      configuration
-	    }))
-			return element
 		},
 		save: function (props) {
 			return null

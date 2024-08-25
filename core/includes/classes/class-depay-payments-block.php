@@ -90,7 +90,7 @@ class DePay_Payments_Block {
       $wrapper_attributes
     );
 
-    wp_register_style('depay-payments-frontend-style', DEPAYPAYMENTS_PLUGIN_URL . 'core/includes/assets/css/frontend.css', '2.3.11');
+    wp_register_style('depay-payments-frontend-style', DEPAYPAYMENTS_PLUGIN_URL . 'core/includes/assets/css/frontend.css', '2.4.0');
     wp_enqueue_style('depay-payments-frontend-style');
 
     wp_register_script(
@@ -169,6 +169,14 @@ class DePay_Payments_Block {
     $widgetAmountCurrency = get_option( 'DePay_payments_widget_amount_currency' );
     $widgetFixAmount = get_option( 'DePay_payments_widget_fix_amount' );
     $accept = [];
+    if($attributes['paymentSettings'] === 'local' && $attributes['paymentAmountType'] === 'free') {
+      $widgetAmountType = 'free';
+      $widgetAmountFreeStart = "1";
+      $widgetAmountFreeMin = "1";
+      $widgetAmountFreeStep = "1";
+    } else if($attributes['paymentSettings'] === 'local' && $attributes['paymentAmountType'] === 'fixed') {
+      $widgetFixAmount = $attributes['paymentAmount'];
+    }
 
     if(empty(get_option('DePay_payments_accepted_payments'))) { 
       $html = '<a href="/wp-admin/admin.php?page=depay-payments" target="_blank">!!! Please finish your payment configuration !!!</a>';
