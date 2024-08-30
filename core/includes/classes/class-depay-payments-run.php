@@ -11,7 +11,7 @@ class DePay_Payments_Run{
 
 	private function add_hooks(){
 
-		wp_register_style('depay-payments-frontend-style', DEPAYPAYMENTS_PLUGIN_URL . 'core/includes/assets/css/frontend.css', '2.4.5');
+		wp_register_style('depay-payments-frontend-style', DEPAYPAYMENTS_PLUGIN_URL . 'core/includes/assets/css/frontend.css', '2.4.6');
     wp_enqueue_style('depay-payments-frontend-style');
 
     wp_register_script(
