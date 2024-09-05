@@ -12,7 +12,7 @@ class DePay_Payments_Link {
       DEPAYPAYMENTS_PLUGIN_URL . 'core/includes/assets/js/frontend.js',
       [],
       DEPAYPAYMENTS_PLUGIN_URL . 'core/includes/assets/js/frontend.js',
-      '2.4.6',
+      '2.4.7',
       true
     );
 
