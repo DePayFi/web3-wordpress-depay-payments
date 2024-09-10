@@ -26,6 +26,6 @@ git commit
 
 ```
 git push
-git tag v2.4.7
-git push origin v2.4.7
+git tag v2.4.8
+git push origin v2.4.8
 ```

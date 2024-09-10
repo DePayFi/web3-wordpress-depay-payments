@@ -1,7 +1,7 @@
 {
   "name": "@depay/web3-wordpress-depay-payments",
   "moduleName": "WordpressDePayPayments",
-  "version": "2.4.7",
+  "version": "2.4.8",
   "description": "Accept Web3 Payments, supporting various cryptocurrency tokens and wallets: MetaMask, Phantom, USDC, USDT, ETH, SOL, BSC, POL...",
   "main": "./dist/umd/index.js",
   "module": "./dist/esm/index.js",
