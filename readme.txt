@@ -3,7 +3,7 @@ Contributors: depayfi
 Tags: payments, cryptocurrency, web3, DePay, USDC
 Requires at least: 5.0
 Tested up to: 6.6
-Stable tag: 2.5.0
+Stable tag: 2.5.1
 Requires PHP: 5.6
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -72,6 +72,9 @@ Start for free. Pay-as-you-go 1.5% per transaction.
 7. Customize the theme appearance with a live preview.
 
 == Changelog ==
+
+= 2.5.1 =
+* fixes solflare handover and some solana rpcs
 
 = 2.5.0 =
 * adds World Chain supprt + various bug fixes

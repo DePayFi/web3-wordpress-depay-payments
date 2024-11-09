@@ -5,7 +5,7 @@
 }(this, (function () { 'use strict';
 
   const logo$a = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAwIDEwMDAiIHhtbDpzcGFjZT0icHJlc2VydmUiPjxwYXRoIGQ9Ik0yOTkuMyAyMzcuNSA1MDAgMTIybDIwMC43IDExNS41LTczLjUgNDIuNkw1MDAgMjA4LjJsLTEyNy4xIDcxLjktNzMuNi00Mi42em00MDEuNCAxNDYtNzMuNS00Mi42LTEyNy4xIDczTDM3MyAzNDAuNGwtNzMuNSA0My4xdjg1LjdsMTI3LjEgNzN2MTQ1LjRsNzMuNSA0My4xIDczLjUtNDMuMVY1NDIuMWwxMjcuMS03M3YtODUuNnptMCAyMzIuMXYtODUuN2wtNzMuNSA0Mi42djg1LjdjLS4xLS42IDczLjUtNDIuNiA3My41LTQyLjZ6bTUxLjkgMjkuMy0xMjcuMSA3M3Y4NS43TDgyNi4xIDY4OFY0NTYuNGwtNzMuNSA0My4xdjE0NS40em0tNzMuNS0zMzQuNCA3My41IDQzLjF2ODUuN2w3My41LTQzLjF2LTg1LjdsLTczLjUtNDMuMS03My41IDQzLjF6TTQyNi41IDc0OS40djg1LjdsNzMuNSA0My4xIDczLjUtNDMuMXYtODUuN2wtNzMuNSA0Mi03My41LTQyek0yOTkuMyA2MTUuNmw3My41IDQzLjF2LTg2LjJMMjk5LjMgNTMwdjg1LjZ6bTEyNy4yLTMwNS4xIDczLjUgNDMuMSA3My41LTQzLjEtNzMuNS00Mi42YzAtLjUtNzMuNSA0Mi42LTczLjUgNDIuNnptLTE3OS4xIDQzLjEgNzMuNS00My4xLTczLjUtNDMuMS03My41IDQzLjF2ODUuN2w3My41IDQzLjF2LTg1Ljd6bTAgMTQ1LjQtNzMuNS00Mi42VjY4OGwyMDAuNyAxMTUuNXYtODUuN2wtMTI3LjEtNzNjLS4xLjEtLjEtMTQ1LjgtLjEtMTQ1Ljh6IiBmaWxsPSIjZjBiOTBiIi8+PC9zdmc+';
-  const currencyLogo$6 = "https://app.uniswap.org/static/media/bnb-logo.797868eb94521320b78e3967134febbe.svg";
+  const currencyLogo$6 = "https://assets.trustwalletapp.com/blockchains/smartchain/info/logo.png";
   const wrappedLogo$5 = "https://assets.trustwalletapp.com/blockchains/smartchain/assets/0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c/logo.png";
 
   var bsc = {
@@ -42,7 +42,7 @@
     endpoints: [ // make sure provider supports batch size of 50 batch requests!
       'https://binance.llamarpc.com',
       'https://bsc-rpc.publicnode.com',
-      'https://endpoints.omniatech.io/v1/bsc/mainnet/public'
+      'https://bsc.rpc.blxrbdn.com'
     ],
     tokens: [ // only major tokens
       {"address": "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE", "symbol": "BNB", "name": "Binance Coin", "decimals": 18, "logo": currencyLogo$6, "type": "NATIVE"},
@@ -56,7 +56,8 @@
     ],
     zero: '0x0000000000000000000000000000000000000000',
     maxInt: '115792089237316195423570985008687907853269984665640564039457584007913129639935',
-    permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3'
+    permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
+    blockTime: 3000, // 3s
   };
 
   const logo$9 = 'data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeD0iMCIgeT0iMCIgdmlld0JveD0iMCAwIDEwMDAgMTAwMCIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PHN0eWxlPi5zdDB7ZmlsbC1vcGFjaXR5Oi42MDJ9LnN0MCwuc3Qxe2ZpbGw6I2ZmZn08L3N0eWxlPjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik01MTEuNCA3My4zdjMxNS41TDc3OCA1MDggNTExLjQgNzMuM3oiLz48cGF0aCBjbGFzcz0ic3QxIiBkPSJNNTExLjQgNzMuMyAyNDQuNyA1MDhsMjY2LjYtMTE5LjJWNzMuM3oiLz48cGF0aCBjbGFzcz0ic3QwIiBkPSJNNTExLjQgNzEyLjN2MjE0LjVsMjY2LjgtMzY5LjEtMjY2LjggMTU0LjZ6Ii8+PHBhdGggY2xhc3M9InN0MSIgZD0iTTUxMS40IDkyNi43VjcxMi4zTDI0NC43IDU1Ny42bDI2Ni43IDM2OS4xeiIvPjxwYXRoIGQ9Ik01MTEuNCA2NjIuNyA3NzggNTA4IDUxMS40IDM4OC44djI3My45eiIgZmlsbD0iI2ZmZiIgZmlsbC1vcGFjaXR5PSIuMiIvPjxwYXRoIGNsYXNzPSJzdDAiIGQ9Im0yNDQuNyA1MDggMjY2LjYgMTU0LjdWMzg4LjhMMjQ0LjcgNTA4eiIvPjwvc3ZnPgo=';
@@ -96,9 +97,9 @@
       if(address) { return `https://etherscan.io/address/${address}` }
     },
     endpoints: [ // make sure provider supports batch size of 50 batch requests!
-      'https://eth.rpc.blxrbdn.com',
       'https://eth.llamarpc.com',
-      'https://ethereum.publicnode.com'
+      'https://ethereum.publicnode.com',
+      'https://eth.rpc.blxrbdn.com'
     ],
     tokens: [ // only major tokens
       {"address": "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE", "symbol": "ETH", "name": "Ether", "decimals": 18, "logo": currencyLogo$5, "type": "NATIVE"},
@@ -114,12 +115,14 @@
     ],
     zero: '0x0000000000000000000000000000000000000000',
     maxInt: '115792089237316195423570985008687907853269984665640564039457584007913129639935',
-    permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3'
+    permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
+    blockTime: 12000, // 12s
   };
 
   const logo$8 = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAwIDEwMDAiIHhtbDpzcGFjZT0icHJlc2VydmUiPjxwYXRoIGQ9Ik00NjcgMTM1LjVjMTgtOS4zIDQ1LjEtOS4zIDYzIDBsMTgzLjQgOTdjMTAuNyA2LjEgMTYuNiAxNCAxOCAyMy4zdjQ4Ni42YzAgOS4zLTYuMSAxOS4yLTE4IDI1LjJsLTE4My4yIDk3Yy0xOCA5LjMtNDUuMSA5LjMtNjMgMGwtMTgzLjMtOTdjLTExLjktNi4xLTE3LjItMTUuOS0xOC0yNS4yVjI1NS43Yy43LTguNyA2LjctMTcuMiAxNy4yLTIzLjNMNDY3IDEzNS41em0yMzUuOCAzODkuNy0xNzIuNiA5MC45Yy0xOCA5LjMtNDUuMSA5LjMtNjMgMGwtMTcxLjktOTAuM3YyMTQuNGwxNzEuOSA5MC4zYzEwIDUuMyAyMC42IDEwLjcgMzEuMiAxMS4zaC43YzEwIDAgMjAtNS4zIDMwLjUtMTBsMTc0LTkyLjMtLjgtMjE0LjN6TTIzNy4zIDczMS4xYzAgMTguNiAyIDMxLjIgNi43IDM5LjggMy4zIDcuMyA4LjcgMTIuNiAxOC42IDE5LjJsLjcuN2MyIDEuNCA0LjcgMi42IDcuMyA0LjdsMy4zIDIgMTAuNyA2LjEtMTQuNiAyNC42LTExLjMtNy4zLTItMS40Yy0zLjMtMi02LjEtNC04LjctNS4zLTI3LjktMTguNi0zNy44LTM5LjItMzcuOC04MS42di0xLjRoMjcuMXpNNDg1IDM5Ni40Yy0xLjQuNy0yLjYuNy00IDEuNGwtMTgzLjIgOTYuOWgtLjcuN2wxODMuMyA5N2MxLjQuNyAyLjYgMS40IDQgMS40bC0uMS0xOTYuN3ptMjkuMyAwdjE5Ny44YzEuNC0uNyAyLjYtLjcgNC0xLjRsMTgzLjMtOTdoLjctLjdsLTE4My4zLTk4LjJjLTEuNC0uNS0yLjgtMS4yLTQtMS4yem0xODguNS0xMDctMTY0LjcgODYuMyAxNjQuNyA4Ni40VjI4OS40em0tNDA3LjcgMHYxNzMuM2wxNjQuNy04Ni4zLTE2NC43LTg3em0yMjIuNS0xMjhjLTkuMy01LjMtMjYuNS01LjMtMzYuNiAwbC0xODMuMiA5N2gtLjcuN2wxODMuMyA5N2M5LjMgNS4zIDI2LjUgNS4zIDM2LjYgMGwxODMuMy05N2guNy0uN2wtMTgzLjQtOTd6bTIxMi41IDkuMyAxMS4zIDcuMyAyIDEuNGMzLjMgMiA2LjEgNCA4LjcgNS4zIDI3LjkgMTguNiAzNy44IDM5LjIgMzcuOCA4MS42djEuNGgtMjguN2MwLTE4LjYtMi0zMS4yLTYuNy0zOS44LTMuMy03LjMtOC43LTEyLjYtMTguNi0xOS4ybC0uNy0uN2MtMi0xLjQtNC43LTIuNi03LjMtNC43bC0zLjMtMi0xMC43LTYuMSAxNi4yLTI0LjV6IiBmaWxsPSIjZmZmIi8+PC9zdmc+';
-  const currencyLogo$4 = "https://assets.spooky.fi/tokens/FTM.png";
-  const wrappedLogo$3 = "https://assets.spooky.fi/tokens/wFTM.png";
+  const currencyLogo$4 = "https://assets.trustwalletapp.com/blockchains/fantom/info/logo.png";
+  const wrappedLogo$3 = "https://assets.trustwalletapp.com/blockchains/fantom/assets/0x21be370D5312f44cB42ce377BC9b8a0cEF1A4C83/logo.png";
+
 
   var fantom = {
     name: 'fantom',
@@ -152,19 +155,20 @@
       if(address) { return `https://ftmscan.com/address/${address}` }
     },
     endpoints: [ // make sure provider supports batch size of 50 batch requests!
-      'https://endpoints.omniatech.io/v1/fantom/mainnet/public',
+      'https://rpc.fantom.network',
       'https://fantom.publicnode.com',
       'https://rpc2.fantom.network'
     ],
     tokens: [ // only major tokens
       {"address": "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE", "symbol": "FTM", "name": "Fantom", "decimals": 18, "logo": currencyLogo$4, "type": "NATIVE"},
       {"address": "0x21be370D5312f44cB42ce377BC9b8a0cEF1A4C83", "symbol": "WFTM", "name": "Wrapped Fantom", "decimals": 18, "logo": wrappedLogo$3, "type": "20"},
-      {"address": "0x28a92dde19D9989F39A49905d7C9C2FAc7799bDf", "symbol": "lzUSDC", "name": "LayerZero USDC", "decimals": 6, "logo": "https://assets.spooky.fi/tokens/USDC.png", "type": "20"},
-      {"address": "0x1B6382DBDEa11d97f24495C9A90b7c88469134a4", "symbol": "axlUSDC", "name": "Axelar Wrapped USDC", "decimals": 6, "logo": "https://assets.spooky.fi/tokens/USDC.png", "type": "20"},
+      {"address": "0x28a92dde19D9989F39A49905d7C9C2FAc7799bDf", "symbol": "lzUSDC", "name": "LayerZero USDC", "decimals": 6, "logo": "https://ftmscan.com/token/images/axlusdc_32.png", "type": "20"},
+      {"address": "0x1B6382DBDEa11d97f24495C9A90b7c88469134a4", "symbol": "axlUSDC", "name": "Axelar Wrapped USDC", "decimals": 6, "logo": "https://ftmscan.com/token/images/axlusdc_32.png", "type": "20"},
     ],
     zero: '0x0000000000000000000000000000000000000000',
     maxInt: '115792089237316195423570985008687907853269984665640564039457584007913129639935',
-    permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3'
+    permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
+    blockTime: 1000, // 1s
   };
 
   const logo$7 = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAwIDEwMDAiIHhtbDpzcGFjZT0icHJlc2VydmUiPjxwYXRoIGQ9Ik0xMzEuNSA0NTkuM2MtMTQuNCA5LjYtMjQgMjQtMjQgNDMuMnYxOTQuNGMwIDE5LjIgOS42IDM2IDI0IDQzLjJsMTY1LjYgOTZjMTQuNCA5LjYgMzMuNiA5LjYgNDggMGwxNjUuNi05NmMxNC40LTkuNiAyNC0yNCAyNC00My4ydi02OS42bC03Ni44LTQzLjJ2NjQuOGMwIDE5LjItOS42IDM2LTI0IDQzLjJsLTg2LjQgNTIuOGMtMTQuNCA5LjYtMzMuNiA5LjYtNDggMGwtODYuNC01MC40Yy0xNC40LTkuNi0yNC0yNC0yNC00My4yVjU1MC41YzAtMTkuMiA5LjYtMzYgMjQtNDMuMmw4OC44LTUwLjRjMTQuNC05LjYgMzMuNi05LjYgNDggMGwxMTIuOCA2NC44IDc2LjggNDUuNiAxMTIuOCA2NC44YzE0LjQgOS42IDMzLjYgOS42IDQ4IDBsMTY4LTk2YzE0LjQtOS42IDI0LTI0IDI0LTQzLjJ2LTE5MmMwLTE0LjQtOS42LTMxLjItMjQtNDAuOGwtMTY4LTk2Yy0xNC40LTkuNi0zMy42LTkuNi00OCAwbC0xNjUuNiA5NmMtMTQuNCA5LjYtMjQgMjQtMjQgNDMuMnY2OS42bDc2LjggNDUuNnYtNjkuNmMwLTE5LjIgOS42LTM2IDI0LTQzLjJsODguOC01Mi44YzE0LjQtOS42IDMzLjYtOS42IDQ4IDBsODguOCA1MC40YzE0LjQgOS42IDI0IDI0IDI0IDQzLjJ2MTAwLjhjMCAxOS4yLTEyIDM2LTI0IDQzLjJsLTg4LjggNTIuOGMtMTQuNCA5LjYtMzMuNiA5LjYtNDggMGwtMTEyLjgtNjkuNi03OS4yLTQzLjItMTE3LjYtNjkuNmMtMTQuNC05LjYtMzMuNi05LjYtNDggMCAwIDIuNC0xNjAuOCA5OC40LTE2My4yIDk4LjR6IiBmaWxsPSIjZmZmIi8+PC9zdmc+';
@@ -218,7 +222,8 @@
     ],
     zero: '0x0000000000000000000000000000000000000000',
     maxInt: '115792089237316195423570985008687907853269984665640564039457584007913129639935',
-    permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3'
+    permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
+    blockTime: 2000, // 2s
   };
 
   const logo$6 = 'data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeD0iMCIgeT0iMCIgdmlld0JveD0iMCAwIDEwMDAgMTAwMCIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PHN0eWxlPi5zdDF7ZmlsbDp1cmwoI1NWR0lEXzAwMDAwMDE5Njc2ODQzODE5NzI3MzAwODIwMDAwMDA1OTQ3NjMyODMzODYxMjM4OTE3Xyl9LnN0MntmaWxsOnVybCgjU1ZHSURfMDAwMDAwNjQzMjA1MjE4MTcxODM4NzM1NjAwMDAwMDMxNzkyNDIxNTkzMzkwODM5NjdfKX08L3N0eWxlPjxsaW5lYXJHcmFkaWVudCBpZD0iU1ZHSURfMV8iIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iODE1Ljg1NiIgeTE9IjcwLjgyNCIgeDI9IjM4OC4zMzYiIHkyPSItNzQ4LjA1MiIgZ3JhZGllbnRUcmFuc2Zvcm09Im1hdHJpeCgxIDAgMCAtMSAwIDE5MS40MzUpIj48c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiMwMGZmYTMiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNkYzFmZmYiLz48L2xpbmVhckdyYWRpZW50PjxwYXRoIGQ9Ik0yMzcuOSA2NTcuOWM0LjktNC45IDEyLjItNy4zIDE3LjEtNy4zaDYxOS43YzEyLjIgMCAxNy4xIDE0LjcgOS44IDIyTDc2Mi4xIDc5NS4xYy00LjkgNC45LTEyLjIgNy4zLTE3LjEgNy4zSDEyNS4zYy0xMi4yIDAtMTcuMS0xNC43LTkuOC0yNC41bDEyMi40LTEyMHoiIGZpbGw9InVybCgjU1ZHSURfMV8pIi8+PGxpbmVhckdyYWRpZW50IGlkPSJTVkdJRF8wMDAwMDE1MDgxNTQ0MzI2NzI2OTc2MDQ0MDAwMDAxMzQ2MDgyNDM3MDQwMzE3MjU0M18iIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iNjI4LjQ4MSIgeTE9IjE2NC4xMzQiIHgyPSIyMDAuOTYyIiB5Mj0iLTY1NC43NCIgZ3JhZGllbnRUcmFuc2Zvcm09Im1hdHJpeCgxIDAgMCAtMSAwIDE5MS40MzUpIj48c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiMwMGZmYTMiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNkYzFmZmYiLz48L2xpbmVhckdyYWRpZW50PjxwYXRoIGQ9Ik0yMzcuOSAyMDQuOGM0LjktNC45IDEyLjItNy4zIDE3LjEtNy4zaDYxOS43YzEyLjIgMCAxNy4xIDE0LjcgOS44IDIyTDc2Mi4xIDM0MmMtNC45IDQuOS0xMi4yIDcuMy0xNy4xIDcuM0gxMjUuM2MtMTIuMiAwLTE3LjEtMTQuNy05LjgtMjJsMTIyLjQtMTIyLjV6IiBmaWxsPSJ1cmwoI1NWR0lEXzAwMDAwMTUwODE1NDQzMjY3MjY5NzYwNDQwMDAwMDEzNDYwODI0MzcwNDAzMTcyNTQzXykiLz48bGluZWFyR3JhZGllbnQgaWQ9IlNWR0lEXzAwMDAwMDA3NDA5ODc3MzYzMTA0OTgxNjMwMDAwMDE1MTMzNzA1NTcwNjgwMDk3NzA5XyIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIHgxPSI3MjAuOTIzIiB5MT0iMTE1Ljg3IiB4Mj0iMjkzLjQwNiIgeTI9Ii03MDMuMDAzIiBncmFkaWVudFRyYW5zZm9ybT0ibWF0cml4KDEgMCAwIC0xIDAgMTkxLjQzNSkiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzAwZmZhMyIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI2RjMWZmZiIvPjwvbGluZWFyR3JhZGllbnQ+PHBhdGggZD0iTTc2Mi4xIDQzMC4xYy00LjktNC45LTEyLjItNy4zLTE3LjEtNy4zSDEyNS4zYy0xMi4yIDAtMTcuMSAxNC43LTkuOCAyMkwyMzggNTY3LjNjNC45IDQuOSAxMi4yIDcuMyAxNy4xIDcuM2g2MTkuN2MxMi4yIDAgMTcuMS0xNC43IDkuOC0yMkw3NjIuMSA0MzAuMXoiIGZpbGw9InVybCgjU1ZHSURfMDAwMDAwMDc0MDk4NzczNjMxMDQ5ODE2MzAwMDAwMTUxMzM3MDU1NzA2ODAwOTc3MDlfKSIvPjwvc3ZnPgo=';
@@ -254,9 +259,9 @@
       if(address) { return `https://solscan.io/address/${address}` }
     },
     endpoints: [
-      'https://swr.xnftdata.com/rpc-proxy',
+      'https://solana-mainnet.g.alchemy.com/v2/demo',
       'https://solana-rpc.publicnode.com',
-      'https://endpoints.omniatech.io/v1/sol/mainnet/public'
+      'https://endpoints.omniatech.io/v1/sol/mainnet/public',
     ],
     sockets: [
       'wss://solana.drpc.org',
@@ -274,7 +279,8 @@
     ],
     zero: '0',
     maxInt: '340282366920938463463374607431768211455',
-    permit2: undefined
+    permit2: undefined,
+    blockTime: 500, // 0.5s
   };
 
   const logo$5 = 'data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeD0iMCIgeT0iMCIgdmlld0JveD0iMCAwIDEwMDAgMTAwMCIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PHN0eWxlPi5zdDF7ZmlsbDojMjEzMTQ3fTwvc3R5bGU+PHBhdGggZD0iTTkyIDkyaDgxNnY4MTZIOTJWOTJ6IiBmaWxsPSJub25lIi8+PHBhdGggY2xhc3M9InN0MSIgZD0iTTE2NS44IDM0MC4xVjY2MGMwIDIwLjYgMTAuOCAzOS4yIDI4LjcgNDkuNmwyNzcuMSAxNTkuOWMxNy42IDEwLjEgMzkuNSAxMC4xIDU3LjEgMGwyNzcuMS0xNTkuOWMxNy42LTEwLjEgMjguNy0yOSAyOC43LTQ5LjZWMzQwLjFjMC0yMC42LTEwLjgtMzkuMi0yOC43LTQ5LjZsLTI3Ny4xLTE2MGMtMTcuNi0xMC4xLTM5LjUtMTAuMS01Ny4xIDBsLTI3Ny4xIDE2MGMtMTcuNiAxMC4xLTI4LjQgMjktMjguNCA0OS42aC0uM3oiLz48cGF0aCBkPSJtNTYwLjQgNTYyLTM5LjUgMTA4LjRjLTEgMi45LTEgNi4yIDAgOS41bDY3LjkgMTg2LjQgNzguNi00NS40LTk0LjMtMjU4LjhjLTIuMy02LTEwLjQtNi0xMi43LS4xem03OS4zLTE4Mi4xYy0yLjMtNS45LTEwLjQtNS45LTEyLjcgMGwtMzkuNSAxMDguNGMtMSAyLjktMSA2LjIgMCA5LjVMNjk4LjggODAzbDc4LjYtNDUuNC0xMzcuNy0zNzcuNHYtLjN6IiBmaWxsPSIjMTJhYWZmIi8+PHBhdGggZD0iTTUwMCAxNDIuNmMyIDAgMy45LjYgNS41IDEuNmwyOTkuNiAxNzNjMy42IDIgNS41IDUuOSA1LjUgOS44djM0NmMwIDMuOS0yLjMgNy44LTUuNSA5LjhsLTI5OS42IDE3M2MtMS42IDEtMy42IDEuNi01LjUgMS42cy0zLjktLjYtNS41LTEuNmwtMjk5LjYtMTczYy0zLjYtMi01LjUtNS45LTUuNS05LjhWMzI2LjdjMC0zLjkgMi4zLTcuOCA1LjUtOS44bDI5OS42LTE3M2MxLjYtMSAzLjYtMS42IDUuNS0xLjZ2LjN6bTAtNTAuNmMtMTAuOCAwLTIxLjIgMi42LTMxIDguMmwtMjk5LjYgMTczYy0xOS4yIDExLjEtMzEgMzEuMy0zMSA1My41djM0NmMwIDIyLjIgMTEuOCA0Mi40IDMxIDUzLjVsMjk5LjYgMTczYzkuNSA1LjUgMjAuMiA4LjIgMzEgOC4yczIxLjItMi42IDMxLTguMmwyOTkuNi0xNzNjMTkuMi0xMS4xIDMxLTMxLjMgMzEtNTMuNXYtMzQ2YzAtMjIuMi0xMS44LTQyLjQtMzEtNTMuNWwtMjk5LjktMTczYy05LjUtNS41LTIwLjItOC4yLTMxLTguMmguM3oiIGZpbGw9IiM5ZGNjZWQiLz48cGF0aCBjbGFzcz0ic3QxIiBkPSJtMzAxLjUgODAzLjIgMjcuOC03NS43IDU1LjUgNDYtNTEuOSA0Ny43LTMxLjQtMTh6Ii8+PHBhdGggZD0iTTQ3NC41IDMwMi4yaC03Ni4xYy01LjUgMC0xMC44IDMuNi0xMi43IDguOEwyMjIuOSA3NTcuNWw3OC42IDQ1LjRMNDgxLjEgMzExYzEuNi00LjYtMS42LTkuMS02LjItOS4xbC0uNC4zem0xMzMuMiAwaC03Ni4xYy01LjUgMC0xMC44IDMuNi0xMi43IDguOGwtMTg2IDUwOS44IDc4LjYgNDUuNEw2MTMuOSAzMTFjMS42LTQuNi0xLjYtOS4xLTYuMi05LjF2LjN6IiBmaWxsPSIjZmZmIi8+PC9zdmc+Cg==';
@@ -313,7 +319,7 @@
     endpoints: [ // make sure provider supports batch size of 50 batch requests!
       'https://arbitrum.llamarpc.com',
       'https://arbitrum-one.publicnode.com',
-      'https://endpoints.omniatech.io/v1/arbitrum/one/public'
+      'https://arbitrum.rpc.thirdweb.com'
     ],
     tokens: [ // only major tokens
       {"address": "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE", "symbol": "ETH", "name": "Ether", "decimals": 18, "logo": ethereum.currency.logo, "type": "NATIVE"},
@@ -325,7 +331,8 @@
     ],
     zero: '0x0000000000000000000000000000000000000000',
     maxInt: '115792089237316195423570985008687907853269984665640564039457584007913129639935',
-    permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3'
+    permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
+    blockTime: 250, // 0.25s
   };
 
   const logo$4 = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAwIDEwMDAiIHhtbDpzcGFjZT0icHJlc2VydmUiPjxwYXRoIGQ9Ik0zNTkuMSA3NTEuMWgtOTUuM2MtMjAgMC0yOS45IDAtMzYtMy44LTYuNi00LjMtMTAuNC0xMS4zLTEwLjktMTguOS0uMy03LjEgNC42LTE1LjggMTQuNC0zM2wyMzUtNDE0LjNjMTAuMS0xNy42IDE1LjEtMjYuNCAyMS40LTI5LjYgNi45LTMuNSAxNS4xLTMuNSAyMS45IDAgNi40IDMuMyAxMS40IDEyIDIxLjQgMjkuNmw0OC40IDg0LjMuMi41YzEwLjggMTguOSAxNi4zIDI4LjUgMTguNiAzOC41IDIuNiAxMC45IDIuNiAyMi42IDAgMzMuNS0yLjQgMTAuMS03LjggMTkuOC0xOC44IDM4LjlMNDU2LjIgNjk0LjlsLS4zLjVjLTEwLjggMTktMTYuMyAyOC43LTI0LjEgMzYtOC4zIDgtMTguMyAxMy43LTI5LjMgMTYuOS05LjkgMi44LTIxLjEgMi44LTQzLjQgMi44em0yNDAuMyAwaDEzNi40YzIwLjIgMCAzMC4yIDAgMzYuMy00IDYuNi00LjMgMTAuNi0xMS4zIDEwLjktMTkuMS4zLTYuOS00LjUtMTUuMi0xMy45LTMxLjZsLTEtMS43TDY5OS44IDU3OGwtLjgtMS4yYy05LjYtMTYuMy0xNC40LTI0LjUtMjAuNy0yNy42LTYuOS0zLjYtMTUtMy42LTIxLjcgMC02LjIgMy4zLTExLjMgMTEuOC0yMS4zIDI5bC02OC4xIDExNi45LS4yLjNjLTEwLjEgMTcuMi0xNSAyNS44LTE0LjUgMzIuOC41IDcuNyA0LjUgMTQuOSAxMC45IDE5IDUuNyAzLjkgMTUuOCAzLjkgMzYgMy45eiIgZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGZpbGw9IiNmZmYiLz48L3N2Zz4=';
@@ -365,7 +372,8 @@
     },
     endpoints: [ // make sure provider supports batch size of 50 batch requests!
       'https://avalanche-c-chain-rpc.publicnode.com',
-      'https://endpoints.omniatech.io/v1/avax/mainnet/public',
+      'https://avalanche-c-chain.publicnode.com',
+      'https://avalanche-api.flare.network/ext/bc/C/rpc',
     ],
     tokens: [ // only major tokens
       {"address": "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE", "symbol": "AVAX", "name": "Avalanche", "decimals": 18, "logo": currencyLogo$1, "type": "NATIVE"},
@@ -377,7 +385,8 @@
     ],
     zero: '0x0000000000000000000000000000000000000000',
     maxInt: '115792089237316195423570985008687907853269984665640564039457584007913129639935',
-    permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3'
+    permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
+    blockTime: 2000, // 2s
   };
 
   const logo$3 = 'data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeD0iMCIgeT0iMCIgdmlld0JveD0iMCAwIDEwMDAgMTAwMCIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PHN0eWxlPi5zdDB7ZmlsbDojZmZmfTwvc3R5bGU+PHBhdGggY2xhc3M9InN0MCIgZD0iTTMzMS45IDU1Ni41YzIzLjUgMCA0Ni40LTcuOCA2NS0yMi4yTDI0OCAzODUuNGMtMzUuOSA0Ni40LTI3LjQgMTEyLjkgMTguOSAxNDguOCAxOC42IDE0IDQxLjUgMjEuOSA2NSAyMS45di40em00NDIuMy0xMDYuMWMwLTIzLjUtNy44LTQ2LjQtMjIuMi02NUw2MDMuMiA1MzQuMmM0Ni40IDM1LjkgMTEyLjkgMjcuNCAxNDguOC0xOC45IDE0LjMtMTguNiAyMi4yLTQxLjQgMjIuMi02NC45eiIvPjxwYXRoIGNsYXNzPSJzdDAiIGQ9Im04NDkuMiAyODguNS02NS45IDY1LjljNTIuOSA2My42IDQ0LjcgMTU4LTE4LjkgMjExLjItNTUuNiA0Ni43LTEzNi42IDQ2LjctMTkyLjIgMEw1MDAgNjM3LjdsLTcyLjEtNzIuMWMtNjMuNiA1Mi45LTE1OCA0NC43LTIxMS4yLTE4LjktNDYuNy01NS42LTQ2LjctMTM2LjYgMC0xOTIuMmwtMzMuNi0zMy42LTMyLTMyLjNDMTEyLjMgMzUyLjIgOTIgNDI1LjMgOTIgNTAwYzAgMjI1LjIgMTgyLjggNDA4IDQwOCA0MDhzNDA4LTE4Mi44IDQwOC00MDhjLjMtNzQuNC0yMC42LTE0Ny44LTU4LjgtMjExLjV6Ii8+PHBhdGggY2xhc3M9InN0MCIgZD0iTTc5NS4xIDIxOC4zYy0xNTUuNC0xNjIuOC00MTMuNi0xNjktNTc2LjQtMTMuNy00LjkgNC42LTkuNSA5LjEtMTMuNyAxMy43LTEwLjEgMTAuOC0xOS42IDIxLjktMjguNyAzMy4zTDUwMCA1NzUuNGwzMjMuOC0zMjMuOGMtOC44LTExLjctMTguNi0yMi44LTI4LjctMzMuM3pNNTAwIDE0NS4yYzk1LjMgMCAxODQuMSAzNi45IDI1MSAxMDMuOEw1MDAgNTAwIDI0OSAyNDljNjYuNi02Ny4yIDE1NS43LTEwMy44IDI1MS0xMDMuOHoiLz48L3N2Zz4K';
@@ -429,7 +438,8 @@
     ],
     zero: '0x0000000000000000000000000000000000000000',
     maxInt: '115792089237316195423570985008687907853269984665640564039457584007913129639935',
-    permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3'
+    permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
+    blockTime: 5000, // 5s
   };
 
   const logo$2 = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAwIDEwMDAiIHhtbDpzcGFjZT0icHJlc2VydmUiPjxwYXRoIGQ9Ik00ODcuMSAzOTUuN2MtNS4yLTE1LjgtMTMuMi0zMS43LTI2LjQtNDIuMi0xMy4yLTEwLjUtMjYuNC0yMS4yLTQ0LjktMjYuNC0xOC41LTUuMi0zNy04LTU4LjEtOC00Ny41IDAtODcuMSAxMC41LTExNi4xIDM0LjQtMjkgMjMuOC00Ny41IDU4LjEtNjAuNyAxMDIuOS0yLjYgMTUuOC04IDI5LTEwLjUgNDQuOS0yLjYgMTMuMi01LjIgMjktOCA0Mi4yLTIuNiAyMy44LTIuNiA0Mi4yIDIuNiA2MC43IDUuMiAxNS44IDEzLjIgMzEuNyAyNi40IDQyLjIgMTMuMiAxMC41IDI2LjQgMjEuMiA0NC45IDI2LjQgMTguNCA1LjIgMzcgOCA1OC4xIDggNDcuNSAwIDg3LjEtMTAuNSAxMTYuMS0zNC40czQ3LjUtNTguMSA2MC43LTEwMi45YzIuNi0xMy4yIDUuMi0yOSAxMC41LTQyLjIgMi42LTEzLjIgNS4yLTI5IDgtNDQuOSAyLjgtMjMuOCAyLjgtNDQuOC0yLjYtNjAuN3ptLTkyLjQgNjAuOGMtMi42IDEzLjItNS4yIDI2LjQtOCAzOS41LTIuNiAxMy4yLTUuMiAyNi40LTEwLjUgNDIuMi01LjIgMjMuOC0xNS44IDM5LjUtMjkgNTAuMi0xMy4yIDEwLjUtMjkgMTUuOC00Ny41IDE1LjgtMTguNCAwLTMxLjctNS4yLTM5LjUtMTUuOC04LTEwLjUtMTAuNS0yOS01LjItNTAuMiAyLjYtMTUuOCA1LjItMjkgOC00Mi4yIDIuNi0xMy4yIDUuMi0yNi40IDEwLjUtMzkuNSA1LjItMjMuOCAxNS44LTM5LjUgMjktNTAuMiAxMy4yLTEwLjUgMjktMTUuOCA0Ny41LTE1LjggMTguNCAwIDMxLjcgNS4yIDM5LjUgMTUuOCA3LjkgMTAuNiAxMC41IDI2LjMgNS4yIDUwLjJ6bTQ0MC45LTY4LjZjLTUuMi0xNS44LTEzLjItMjYuNC0yMy44LTM3cy0yMy44LTE1LjgtNDIuMi0yMS4yYy0xNS44LTUuMi0zNC40LTgtNTUuNC04SDU3OS43Yy0yLjYgMC01LjIgMC0xMC41IDIuNi0yLjYgMi42LTUuMiA1LjItNS4yIDhsLTY4LjYgMzI3LjRjMCAyLjYgMCA4IDIuNiA4IDIuNiAyLjYgNS4yIDIuNiA4IDIuNmg2OC42YzIuNiAwIDggMCAxMC41LTIuNnM1LjItNS4yIDUuMi04bDIzLjgtMTEwLjloNjguNmM0Mi4yIDAgNzYuNi04IDEwMi45LTI2LjQgMjYuNC0xOC40IDQyLjItNDcuNSA1MC4yLTg0LjYgNS4xLTE4LjQgNS4xLTM2LjctLjItNDkuOXpNNzQzLjEgNDM4Yy0yLjYgMTUuOC0xMC41IDI2LjQtMjEuMiAzNC40cy0yMy44IDEwLjUtMzcgMTAuNWgtNTguMWwxOC40LTg5LjdoNjAuN2MxMy4yIDAgMjEuMiAyLjYgMjYuNCA1LjIgNS4yIDUuMiAxMC41IDEwLjUgMTAuNSAxNS44IDMgNS4yIDMgMTMuMi4zIDIzLjh6IiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZmlsbD0iI2ZmZiIvPjwvc3ZnPg==';
@@ -465,9 +475,9 @@
       if(address) { return `https://optimistic.etherscan.io/address/${address}` }
     },
     endpoints: [ // make sure provider supports batch size of 50 batch requests!
-      'https://endpoints.omniatech.io/v1/op/mainnet/public',
       'https://optimism.llamarpc.com',
-      'https://optimism.publicnode.com'
+      'https://optimism.publicnode.com',
+      'https://optimism.rpc.thirdweb.com'
     ],
     tokens: [ // only major tokens
       {"address": "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE", "symbol": "ETH", "name": "Ether", "decimals": 18, "logo": ethereum.currency.logo, "type": "NATIVE"},
@@ -479,7 +489,8 @@
     ],
     zero: '0x0000000000000000000000000000000000000000',
     maxInt: '115792089237316195423570985008687907853269984665640564039457584007913129639935',
-    permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3'
+    permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
+    blockTime: 2000, // 2s
   };
 
   const logo$1 = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAwIDEwMDAiIHhtbDpzcGFjZT0icHJlc2VydmUiPjxwYXRoIGQ9Ik00OTguNiA4NDJDNjg4IDg0MiA4NDIgNjg4LjkgODQyIDQ5OS41UzY4OCAxNTcgNDk4LjYgMTU3QzMxOSAxNTcgMTcxLjIgMjk1LjEgMTU3IDQ3MC4zaDQ1My4xdjU3LjVIMTU3QzE3MiA3MDMuOSAzMTkgODQyIDQ5OC42IDg0MnoiIGZpbGw9IiNmZmYiLz48L3N2Zz4=';
@@ -517,7 +528,7 @@
     endpoints: [ // make sure provider supports batch size of 50 batch requests!
       'https://base-rpc.publicnode.com',
       'https://base.llamarpc.com',
-      'https://base.rpc.subquery.network/public'
+      'https://base.rpc.thirdweb.com'
     ],
     tokens: [ // only major tokens
       {"address": "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE", "symbol": "ETH", "name": "Ether", "decimals": 18, "logo": ethereum.currency.logo, "type": "NATIVE"},
@@ -528,7 +539,8 @@
     ],
     zero: '0x0000000000000000000000000000000000000000',
     maxInt: '115792089237316195423570985008687907853269984665640564039457584007913129639935',
-    permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3'
+    permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
+    blockTime: 2000, // 2s
   };
 
   const logo = 'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgdmlld0JveD0iMCAwIDMyIDMyIj4KICA8Zz4KICAgIDxnPgogICAgICA8cGF0aCBmaWxsPSIjRkZGRkZGIiBkPSJNMjQuNSwxMi40Yy0uNS0xLjEtMS4xLTIuMS0yLTIuOS0uOS0uOS0xLjgtMS41LTIuOS0yLTEuMS0uNS0yLjMtLjctMy42LS43cy0yLjUuMi0zLjYuN2MtMS4xLjUtMi4xLDEuMS0yLjksMi0uOS45LTEuNSwxLjgtMiwyLjktLjUsMS4xLS43LDIuNC0uNywzLjZzLjIsMi40LjcsMy42Yy41LDEuMSwxLjEsMi4xLDIsMi45LjkuOSwxLjgsMS41LDIuOSwyLDEuMS41LDIuNC43LDMuNi43czIuNC0uMiwzLjYtLjdjMS4xLS41LDIuMS0xLjEsMi45LTIsLjktLjksMS41LTEuOCwyLTIuOS41LTEuMS43LTIuNC43LTMuNnMtLjItMi40LS43LTMuNlpNMTMsMTUuMWMuMy0xLjUsMS43LTIuNSwzLjMtMi41aDYuNGMuNC44LjcsMS43LjcsMi41aC0xMC41Wk0yMy40LDE2LjljLS4xLjktLjMsMS44LS43LDIuNWgtNi40Yy0xLjYsMC0yLjktMS4xLTMuMy0yLjUsMCwwLDEwLjUsMCwxMC41LDBaTTEwLjcsMTAuN2MxLjQtMS40LDMuMy0yLjIsNS4zLTIuMnMzLjkuNyw1LjMsMi4yaC4xYzAsLjEtNS4yLjEtNS4yLjEtMS40LDAtMi42LjUtMy42LDEuNS0uNy43LTEuMywxLjctMS40LDIuOGgtMi42Yy4yLTEuNy45LTMuMiwyLjEtNC40aDBaTTE2LDIzLjVjLTIsMC0zLjktLjctNS4zLTIuMi0xLjItMS4yLTItMi44LTIuMS00LjRoMi42Yy4yLDEsLjcsMiwxLjQsMi44LDEsMSwyLjIsMS41LDMuNiwxLjVoNS4yLS4xYy0xLjQsMS42LTMuMywyLjMtNS4zLDIuM2gwWiIvPgogICAgPC9nPgogIDwvZz4KPC9zdmc+Cg==';
@@ -566,8 +578,8 @@
       if(address) { return `https://worldchain-mainnet.explorer.alchemy.com/address/${address}` }
     },
     endpoints: [ // make sure provider supports batch size of 50 batch requests!
-      'https://worldchain-mainnet.blastapi.io/1b1a6314-79bf-4afe-b48b-c943fca35292',
-      'https://worldchain-mainnet.g.alchemy.com/public'
+      'https://worldchain-mainnet.g.alchemy.com/public',
+      'https://480.rpc.thirdweb.com'
     ],
     tokens: [ // only major tokens
       {"address": "0x2cFc85d8E48F8EAB294be644d9E25C3030863003", "symbol": "WLD", "name": "Worldcoin", "decimals": 18, "logo": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/optimism/assets/0xdC6fF44d5d932Cbd77B52E5612Ba0529DC6226F1/logo.png", "type": "20"},
@@ -577,7 +589,8 @@
     ],
     zero: '0x0000000000000000000000000000000000000000',
     maxInt: '115792089237316195423570985008687907853269984665640564039457584007913129639935',
-    permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3'
+    permit2: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
+    blockTime: 2000, // 2s
   };
 
   const all = [
