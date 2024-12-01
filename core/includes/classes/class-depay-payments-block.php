@@ -202,9 +202,9 @@ class DePay_Payments_Block {
       if(!empty($widgetFixAmount)) { $amount->fix = (float)$widgetFixAmount; }
     }
 
-    $currency = (empty($widgetDisplayCurrency) || $widgetDisplayCurrency === 'local') ? "" : '"currency": "'.$widgetDisplayCurrency.'"';
+    $currency = (empty($widgetDisplayCurrency) || $widgetDisplayCurrency === 'local') ? "" : '"currency": "'.$widgetDisplayCurrency.'", ';
 
-    $html = '<div class="DePayButton" label="'.esc_html($buttonLabel).'" widget="Payment" configuration=\'{ '.$currency.', "title": "' . $widgetTitle . '", "style": { "colors": { "primary": "'.esc_html($widgetColorPrimary).'", "buttonText": "'.esc_html($widgetColorButtons).'", "icons": "'.esc_html($widgetColorIcons).'", "text": "'.esc_html($widgetColorText).'" }, "css": "'.esc_html($widgetCSS).'" }, "accept": '.str_replace('&quot;', '"', esc_html($accept)).', "amount": '.json_encode($amount).' }\' css="'.esc_html($buttonCSS).'"></div><script>if(typeof DePayButtons != "undefined") { DePayButtons.init({document: document}); }</script>';
+    $html = '<div class="DePayButton" label="'.esc_html($buttonLabel).'" widget="Payment" configuration=\'{ '.$currency.' "title": "' . $widgetTitle . '", "style": { "colors": { "primary": "'.esc_html($widgetColorPrimary).'", "buttonText": "'.esc_html($widgetColorButtons).'", "icons": "'.esc_html($widgetColorIcons).'", "text": "'.esc_html($widgetColorText).'" }, "css": "'.esc_html($widgetCSS).'" }, "accept": '.str_replace('&quot;', '"', esc_html($accept)).', "amount": '.json_encode($amount).' }\' css="'.esc_html($buttonCSS).'"></div><script>if(typeof DePayButtons != "undefined") { DePayButtons.init({document: document}); }</script>';
 
     return sprintf(
       '<div %1$s>%2$s</div>',
