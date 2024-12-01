@@ -184,33 +184,14 @@
 
     useEffect(()=>{
 
-      if(amount === 'fix') {
+      LocalCurrency.Currency.rate({ from: amountCurrency || 'USD', to: 'USD' }).then((rate)=>{
+        setUsdValue((fixAmount/rate).toFixed(2))
+      })
 
-        LocalCurrency.Currency.rate({ from: amountCurrency || 'USD', to: 'USD' }).then((rate)=>{
-          setUsdValue((fixAmount/rate).toFixed(2))
-        })
+      LocalCurrency.Currency.rate({ from: amountCurrency || 'USD', to: (displayedCurrency === 'local') ? undefined : displayedCurrency }).then((rate)=>{
+        setDisplayedCurrencyExample(new LocalCurrency.Currency({ amount: fixAmount/rate, code: (displayedCurrency === 'local') ? undefined : displayedCurrency }).toString())
+      })
 
-        LocalCurrency.Currency.rate({ from: amountCurrency || 'USD', to: (displayedCurrency === 'local') ? undefined : displayedCurrency }).then((rate)=>{
-          setDisplayedCurrencyExample(new LocalCurrency.Currency({ amount: fixAmount/rate, code: (displayedCurrency === 'local') ? undefined : displayedCurrency }).toString())
-        })
-
-      } else { // free
-
-        setDisplayedCurrencyExample(new LocalCurrency.Currency({ amount: startValue || 1, code: (displayedCurrency === 'local') ? undefined : displayedCurrency }).toString())
-
-        if(displayedCurrency === 'local' || displayedCurrency === undefined || displayedCurrency?.length < 3) {
-          LocalCurrency.Currency.rate({ from: new LocalCurrency.Currency({ amount: 0 }).code, to: 'USD' }).then((rate)=>{
-            setUsdValue(((startValue || 1)/rate).toFixed(2))
-          })
-        } else {
-          LocalCurrency.Currency.rate({ 
-            from: 'USD',
-            to: displayedCurrency?.length >= 2 ? displayedCurrency : undefined,
-          }).then((rate)=>{
-            setUsdValue(((startValue || 1)*rate).toFixed(2))
-          })
-        }
-      }
     }, [displayedCurrency, startValue, amount, fixAmount, amountCurrency])
 
     if(!settingsAreLoaded) { return null }
@@ -405,17 +386,10 @@
                     </div>
                   </div>
                   <div className="widget-example"><div className="ReactDialog ReactDialogOpen"><div className="ReactDialogRow"><div className="ReactDialogCell"><div className="ReactDialogStack active forward"><div className="ReactDialogStackRow"><div className="ReactDialogStackCell"><div className="ReactDialogAnimation"><div className="Dialog"><div className="DialogHeader"><div className="DialogHeaderTitle"><div className="PaddingTopS PaddingLeftM PaddingRightM"><div className="FontSizeL TextLeft">Payment</div></div></div><div className="DialogHeaderActionRight PaddingTopS PaddingLeftS PaddingRightS"><button className="ButtonCircular" title="Close dialog"><svg className="CloseIcon Icon" height="24" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><line x1="18" x2="6" y1="6" y2="18"></line><line x1="6" x2="18" y1="6" y2="18"></line></svg></button></div></div><div className="DialogBody"><div className="PaddingLeftM PaddingRightM PaddingBottomXS">
-                  {
-                    amount === 'free' &&
-                    <div className="Card" title="Change amount"><div className="CardBody"><div className="CardBodyWrapper"><div className="CardTitle">Amount</div><div className="CardText"><div className="TokenAmountRow"><span className="TokenAmountCell">{ displayedCurrencyExample }</span></div></div></div></div><div className="CardAction"><svg className="ChevronRight Icon" height="16" viewBox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" fill-rule="evenodd" stroke-width="1"></path></svg></div></div>
-                  }
                   <div className="Card" title="Change payment"><div className="CardImage"><img className="js-widget-payment-example-image" src="https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"/></div><div className="CardBody"><div className="CardBodyWrapper"><h2 className="CardText">
 
                   <div className="TokenAmountRow"><span className="TokenSymbolCell js-widget-example-symbol">USDT</span><span className="TokenAmountCell js-widget-example-amount">{usdValue}</span></div>
-                  {
-                    amount === 'fix' &&
-                    <div class="TokenAmountRow small grey"><span class="TokenSymbolCell">{ displayedCurrencyExample }</span></div>
-                  }
+                  <div class="TokenAmountRow small grey"><span class="TokenSymbolCell">{ displayedCurrencyExample }</span></div>
                   </h2></div></div><div className="CardAction"><svg className="ChevronRight Icon" height="16" viewBox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" fill-rule="evenodd" stroke-width="1"></path></svg></div></div></div></div><div className="DialogFooter"><div className="PaddingTopXS PaddingRightM PaddingLeftM PaddingBottomM"><div><button className="ButtonPrimary" style={{ color: widgetButtonText, backgroundColor: widgetPrimary, borderRadius: `${widgetButtonRadius}px` }}>Pay</button></div></div></div></div></div></div></div></div></div></div></div></div>
                 </div>
               </td>
