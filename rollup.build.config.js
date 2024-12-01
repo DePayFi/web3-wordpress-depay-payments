@@ -8,6 +8,7 @@ import { terser } from "rollup-plugin-terser"
 
 const files = [
   'src/admin.js',
+  'src/block.js',
 ]
 
 export default files.map((file)=>{

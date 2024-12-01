@@ -11,10 +11,10 @@
  * @package       DEPAYPAYMENTS
  * 
  * @wordpress-plugin
- * Plugin Name:   DePay Payments
+ * Plugin Name:   DePay for Wordpress
  * Plugin URI:    https://depay.com/plugins/wordpress
- * Description:   Accept Web3 Payments, supporting various cryptocurrency tokens and wallets: MetaMask, Phantom, USDC, USDT, ETH, SOL, BSC, POL...
- * Version:       2.5.1
+ * Description:   Accept Web3 Crypto Payments & Donations. Supports various tokens, blockchains and wallets. MetaMask, Phantom, USDC, USDT, ETH, SOL, BSC, POL, xDAI…
+ * Version:       3.0.0
  * License:       GPL-2.0+
  * License URI:   http://www.gnu.org/licenses/gpl-2.0.txt
  * Author:        DePay
@@ -26,10 +26,10 @@
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) exit;
 // Plugin name
-define( 'DEPAYPAYMENTS_NAME',      'DePay Payments' );
+define( 'DEPAYPAYMENTS_NAME', 'DePay for Wordpress' );
 
 // Plugin version
-define( 'DEPAYPAYMENTS_VERSION',   '2.5.1' );
+define( 'DEPAYPAYMENTS_VERSION', '3.0.0' );
 
 // Plugin Root File
 define( 'DEPAYPAYMENTS_PLUGIN_FILE', __FILE__ );

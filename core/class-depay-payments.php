@@ -51,7 +51,7 @@ if ( ! class_exists( 'DePay_Payments' ) ) :
 		 * @return	void
 		 */
 		public function __clone() {
-			_doing_it_wrong( __FUNCTION__, __( 'You are not allowed to clone this class.', 'depay-payments' ), '1.0.0' );
+			_doing_it_wrong( __FUNCTION__, __( 'You are not allowed to clone this class.', 'depay-payments' ), DEPAYPAYMENTS_VERSION );
 		}
 
 		/**
@@ -62,7 +62,7 @@ if ( ! class_exists( 'DePay_Payments' ) ) :
 		 * @return	void
 		 */
 		public function __wakeup() {
-			_doing_it_wrong( __FUNCTION__, __( 'You are not allowed to unserialize this class.', 'depay-payments' ), '1.0.0' );
+			_doing_it_wrong( __FUNCTION__, __( 'You are not allowed to unserialize this class.', 'depay-payments' ), DEPAYPAYMENTS_VERSION );
 		}
 
 		/**

@@ -1,26 +1,26 @@
-=== Web3 Cryptocurrency Payments by DePay for Wordpress ===
+=== Web3 Crypto Payments by DePay for Wordpress ===
 Contributors: depayfi
-Tags: payments, cryptocurrency, web3, DePay, USDC
+Tags: web3, crypto, payments, DePay, USDC
 Requires at least: 5.0
-Tested up to: 6.6
-Stable tag: 2.5.1
+Tested up to: 6.7
+Stable tag: 3.0.0
 Requires PHP: 5.6
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Accept Web3 Payments, supporting various cryptocurrency tokens and wallets: MetaMask, Phantom, USDC, USDT, ETH, SOL, BSC, POL...
+Accept Web3 Crypto Payments & Donations. Supports various tokens, blockchains and wallets. MetaMask, Phantom, USDC, USDT, ETH, SOL, BSC, POL, xDAI…
 
 == Description ==
-**Accept Web3 Payments, supporting various cryptocurrency tokens and wallets: MetaMask, Phantom, USDC, USDT, ETH, SOL, BSC, POL...**
+**Accept Web3 Crypto Payments & Donations. Supports various tokens, blockchains and wallets. MetaMask, Phantom, USDC, USDT, ETH, SOL, BSC, POL, xDAI…**
 
-A Block-enabled WordPress plugin for Web3, onchain, cryptocurrency payments supporting various blockchains and tokens (auto-conversion).
+A Block-enabled WordPress plugin for Web3, onchain, crypto payments supporting various blockchains and tokens (auto-conversion).
 
 = Features =
 > 📌 Check out the [live demo](https://web3wordpress.xyz "Wordpress Plugin for Crypto P2P payments (live demo) by DePay").
 
 * **Wallet-to-wallet**: Payments are sent directly to your wallet without the need for an intermediary..
 * **Automatic token-conversion**: Payments are automatically converted into the token you’ve selected for receiving.
-* **Open-source**: You can find our [Web3 Payments Plugin on GitHub](https://github.com/DePayFi/web3-wordpress-depay-payments).
+* **Open-source**: You can find our [Web3 Payments Plugin on GitHub](https://github.com/DePayFi/web3-wordpress-depay).
 * **Block-enabled**: Supports WordPress Gutenberg blocks with customizable payment settings for each block.
 * **Customize style**: Customize the look of your payment button with your own CSS in the WordPress plugin dashboard.
 
@@ -63,15 +63,15 @@ Start for free. Pay-as-you-go 1.5% per transaction.
 
 == Screenshots ==
 
-1. Performing a Web3 Payment with DePay.
-2. Inline links can also trigger payments.
-3. Block-enabled WordPress Plugin for crypto payments.
-4. Insert inline payment links.
-5. Simple Setup: Connect wallet & configure tokens.
-6. Customize the CSS & label of your Web3 payment button.
-7. Customize the theme appearance with a live preview.
+1. Example of a Payment & Donation Button embedded as Gutenberg Blocks.
+2. Configuring accepted payment methods with support for multiple tokens across various blockchains.
+3. Customize the style of the payment button.
+4. Customize the style of the payment widget.
 
 == Changelog ==
+
+= 2024-12-1 - v3.0.0 =
+* merges donation + payment plugin into one: DePay for Wordpress
 
 = 2.5.1 =
 * fixes solflare handover and some solana rpcs

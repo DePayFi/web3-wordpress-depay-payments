@@ -1,8 +1,8 @@
 {
-  "name": "@depay/web3-wordpress-depay-payments",
+  "name": "@depay/web3-wordpress-depay",
   "moduleName": "WordpressDePayPayments",
-  "version": "2.5.1",
-  "description": "Accept Web3 Payments, supporting various cryptocurrency tokens and wallets: MetaMask, Phantom, USDC, USDT, ETH, SOL, BSC, POL...",
+  "version": "3.0.0",
+  "description": "Accept Web3 Crypto Payments & Donations. Supports various tokens, blockchains and wallets. MetaMask, Phantom, USDC, USDT, ETH, SOL, BSC, POL, xDAI…",
   "main": "./dist/umd/index.js",
   "module": "./dist/esm/index.js",
   "files": [
@@ -13,7 +13,7 @@
     "release": "git push && node release.js",
     "update:version": "node update-version.js"
   },
-  "repository": "git@github.com:DePayFi/web3-wordpress-depay-payments.git",
+  "repository": "git@github.com:DePayFi/web3-wordpress-depay.git",
   "keywords": [
     "Wodpress",
     "web3",
@@ -23,9 +23,9 @@
   "author": "depay.com",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/DePayFi/web3-wordpress-depay-payments/issues"
+    "url": "https://github.com/DePayFi/web3-wordpress-depay/issues"
   },
-  "homepage": "https://github.com/DePayFi/web3-wordpress-depay-payments#readme",
+  "homepage": "https://github.com/DePayFi/web3-wordpress-depay#readme",
   "private": false,
   "dependencies": {
     "@depay/web3-blockchains": "^8.0.3",

@@ -143,8 +143,8 @@
   height: 48px;
 }
 .widget-example  .DialogHeaderActionRight .Icon {
-position: relative;
-top: -2px;
+  position: relative;
+  top: 0;
 }
 .widget-example  .DialogHeaderActionLeft {
   position: absolute;

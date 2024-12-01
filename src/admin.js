@@ -1,11 +1,11 @@
-(function ( React, ReactDOM ) {
+(function ( React, ReactDOM, Components ) {
 
   const useEffect = window.React.useEffect
   const useState = window.React.useState
 
   const CURRENCIES = ["AED","AFN","ALL","AMD","ANG","AOA","ARS","AUD","AWG","AZN","BAM","BBD","BDT","BGN","BHD","BIF","BMD","BND","BOB","BRL","BSD","BTN","BWP","BYN","BZD","CAD","CDF","CHF","CLF","CLP","CNY","COP","CRC","CUC","CUP","CVE","CZK","DJF","DKK","DOP","DZD","EGP","ERN","ETB","EUR","FJD","FKP","GBP","GEL","GGP","GHS","GIP","GMD","GNF","GTQ","GYD","HKD","HNL","HRK","HTG","HUF","IDR","ILS","IMP","INR","IQD","IRR","ISK","JEP","JMD","JOD","JPY","KES","KGS","KHR","KMF","KPW","KRW","KWD","KYD","KZT","LAK","LBP","LKR","LRD","LSL","LYD","MAD","MDL","MGA","MKD","MMK","MNT","MOP","MRU","MUR","MVR","MWK","MXN","MYR","MZN","NAD","NGN","NIO","NOK","NPR","NZD","OMR","PAB","PEN","PGK","PHP","PKR","PLN","PYG","QAR","RON","RSD","RUB","RWF","SAR","SBD","SCR","SDG","SEK","SGD","SHP","SLL","SOS","SRD","STD","SVC","SYP","SZL","THB","TJS","TMT","TND","TOP","TRY","TTD","TWD","TZS","UAH","UGX","USD","UYU","UZS","VEF","VND","VUV","WST","XAF","XAG","XCD","XDR","XOF","XPF","YER","ZAR","ZMW","ZWL"]
 
-  const DePayPaymentsAdminPage = function(props) {
+  const DePayWordpressAdminPage = function(props) {
 
     const [ saved, setSaved ] = useState(false)
     const [ settingsAreLoaded, setSettingsAreLoaded ] = useState(false)
@@ -23,6 +23,7 @@
     const [ buttonCss, setButtonCss ] = useState()
     const [ widgetCss, setWidgetCss ] = useState()
     const [ payments, setPayments ] = useState([])
+    const [ justConnected, setJustConnected ] = useState([])
     const [ amount, setAmount ] = useState()
     const [ displayedCurrency, setDisplayedCurrency ] = useState()
     const [ startValue, setStartValue ] = useState()
@@ -34,6 +35,15 @@
     
     const [ displayedCurrencyExample, setDisplayedCurrencyExample ] = useState()
 
+    const addressEllipsis = (address, display = 4) => {
+      if(address === undefined) { return address }
+      let _address = "";
+      _address += address.slice(0, address.match('0x') ? display + 2 : display);
+      _address += '...';
+      _address += address.slice(address.length-display, address.length);
+      return _address;
+    }
+
     const saveSettings = ()=>{
       setIsSaving(true)
       const settings = new window.wp.api.models.Settings({
@@ -42,20 +52,15 @@
         DePay_payments_button_background_color: buttonBackground,
         DePay_payments_button_text_color: buttonText,
         DePay_payments_button_border_radius: buttonRadius,
-        DePay_payments_button_label: label,
         DePay_payments_widget_color_primary: widgetPrimary,
         DePay_payments_widget_button_border_radius: widgetButtonRadius,
         DePay_payments_widget_color_button_text: widgetButtonText,
         DePay_payments_widget_color_icons: undefined,
         DePay_payments_widget_color_text: undefined,
         DePay_payments_widget_css: widgetCss,
-        DePay_payments_widget_amount_type: amount,
+        DePay_payments_widget_payment_amount_type: amount,
         DePay_payments_widget_display_currency: displayedCurrency,
-        DePay_payments_widget_amount_free_start: startValue,
-        DePay_payments_widget_amount_free_min: minValue,
-        DePay_payments_widget_amount_free_step: stepValue,
         DePay_payments_widget_amount_currency: amountCurrency,
-        DePay_payments_widget_fix_amount: fixAmount,
       })
 
       settings.save().then((response) => {
@@ -64,7 +69,7 @@
       })
     }
 
-    const setReceivingWalletAddress = (receiver, index, blockchain)=>{
+    const setReceivingWalletAddress = (receiver, index, blockchain, connected)=>{
     
       let newPayments = [...payments]
       if(!receiver || receiver.length === 0) {
@@ -82,13 +87,28 @@
         }
       }
 
+      if(connected) {
+        let newJustConnected = justConnected.slice()
+        newJustConnected[index] = true
+        setJustConnected(newJustConnected)
+      }
+
       newPayments[index].receiver = receiver
       setPayments(newPayments)
     }
 
+    useEffect(()=>{
+      if(justConnected.length) {
+        let timeout = setTimeout(()=>{
+          setJustConnected([])
+        }, 2000)
+        return ()=>{clearInterval(timeout)}
+      }
+    }, [justConnected])
+
     const connectWallet = async(index, blockchain)=> {
       let { account, accounts, wallet }  = await window.DePayWidgets.Connect()
-      setReceivingWalletAddress(account, index, blockchain)
+      setReceivingWalletAddress(account, index, blockchain, true)
     }
 
     const addToken = async ()=>{
@@ -129,14 +149,9 @@
         const settings = new wp.api.models.Settings()
         settings.fetch({ cache: 'no-cache' }).then((response)=> {
           if(response.DePay_payments_accepted_payments) {
-            response.DePay_payments_accepted_payments.forEach((payment)=>{
-              if(payment.receiver === undefined && response.DePay_payments_receiving_wallet_address) {
-                payment.receiver = response.DePay_payments_receiving_wallet_address
-              }
-            })
             setPayments(response.DePay_payments_accepted_payments)
           }
-          setLabel(response.DePay_payments_button_label || 'Pay')
+          setLabel(response.DePay_payments_button_payment_label || 'Pay')
           setButtonCss(response.DePay_payments_button_css || "button {\n  border-radius: 2px;\n  color: #FFFFFF;\n  background: #32373c;\n}")
           setWidgetCss(response.DePay_payments_widget_css || ".ButtonPrimary {border-radius: 2px;}")
           setButtonBackground(response.DePay_payments_button_background_color || "#32373c")
@@ -151,7 +166,7 @@
           setMinValue(response.DePay_payments_widget_amount_free_min || 1)
           setStepValue(response.DePay_payments_widget_amount_free_step || 1)
           setAmountCurrency(response.DePay_payments_widget_amount_currency?.length > 0 ? response.DePay_payments_widget_amount_currency : 'USD')
-          setFixAmount(response.DePay_payments_widget_fix_amount || 1)
+          setFixAmount(response.DePay_payments_widget_fix_amount || 100)
           setWidgetIconColor()
           setWidgetText()
           setSettingsAreLoaded(true)
@@ -168,7 +183,6 @@
     }, [ buttonRadius, buttonBackground, buttonText, widgetPrimary, widgetButtonRadius, widgetButtonText, widgetIconColor, widgetText, label, buttonCss, widgetCss, payments, amount, displayedCurrency, startValue, minValue, stepValue, amountCurrency, fixAmount ])
 
     useEffect(()=>{
-
 
       if(amount === 'fix') {
 
@@ -204,7 +218,7 @@
     return (
       <div className="wrap">
         
-        <h1 className="wp-heading-inline">DePay Payments</h1>
+        <h1 className="wp-heading-inline">DePay for Wordpress</h1>
 
         <p>To view received payments, please open the <a href="https://app.depay.com/payments" target="_blank">DePay App</a>.</p>
 
@@ -212,16 +226,16 @@
           <tbody>
             <tr>
               <th scope="row">
-                Accepted Payments
+                Accepted
               </th>
               <td>
                 <div style={{ paddingBottom: "1rem" }}>
-                  Select the tokens that you want to receive as payment:
+                  Select the tokens that you want to receive:
                 </div>
                 {
                   payments && payments.map((payment, index)=>{
                     return(
-                      <table key={ `${index}-${payment.blockchain}-${payment.symbol}` } className="wp-list-table widefat fixed striped table-view-list page" style={{ maxWidth: "600px", marginBottom: "0.4rem"}}>
+                      <table key={ `${index}-${payment.blockchain}-${payment.symbol}-${justConnected[index]}` } className="wp-list-table widefat fixed striped table-view-list page" style={{ maxWidth: "600px", marginBottom: "0.4rem"}}>
                         <tr>
                           <td style={{ padding: "1rem 1rem 0.4rem 1rem", display: "flex" }}>
                             <div>
@@ -240,6 +254,9 @@
                                     <a href="#" onClick={ ()=>removeToken(index) }>Remove</a>
                                   </span>
                                 </div>
+                              </div>
+                              <div>
+                                <a href={Web3Blockchains[payment.blockchain].explorerUrlFor({ token: payment.address })} target="_blank">{ addressEllipsis(payment.address) }</a>
                               </div>
                               <div style={{ paddingTop: ".5rem" }}>
                                 <label style={{ marginBottom: 0 }}>
@@ -263,7 +280,12 @@
                               </div>
                               <div className="row-actions visible">
                                 <div>
-                                  <button style={{ marginTop: "0.5rem" }} type="button" className="button button-secondary" onClick={ ()=>connectWallet(index, payment.blockchain) }>Connect Wallet</button>
+                                  { !justConnected[index] &&
+                                    <button style={{ marginTop: "0.5rem" }} type="button" className="button button-secondary" onClick={ ()=>connectWallet(index, payment.blockchain) }>Connect Wallet</button>
+                                  }
+                                  { justConnected[index] &&
+                                    <button style={{ marginTop: "0.5rem" }} type="button" className="button button-primary">✔ wallet connected</button>
+                                  }
                                 </div>
                               </div>
                             </div>
@@ -281,7 +303,7 @@
                     Each incoming payment will be converted on-the-fly into your selected tokens on the selected blockchains.
                   </p>
                   <p className="description">
-                    Customers will be able to use any convertible token as means of payment.
+                    Users will be able to use any convertible token as means of payment.
                   </p>
                   <p className="description">
                     <strong>Payments are sent directly into your wallet.</strong>
@@ -294,40 +316,39 @@
                 Button
               </th>
               <td>
-                <div style={{ display: 'inline-block' }}>
-                  <DePayButtons.DePayButton
-                    css={ buttonCss }
-                    label={ label }
-                    widget={'Payment'}
-                    configuration={ {"accept": payments } }
-                  />
-                </div>
-                <div style={{ paddingTop: '1.4rem' }}>
-                  <label style={{ marginBottom: 0 }}>
-                    <span className="" style={{ opacity: 0.7, paddingBottom: '0.8rem', display: 'block' }}><strong>Label</strong></span>
-                    <div className="components-base-control">
-                      <input
-                        required="required"
-                        type="text" 
-                        value={ label }
-                        onChange={ (event)=>setLabel(event.target.value) }
-                      />
-                    </div>
-                  </label>
-                </div>
-                <div style={{ paddingTop: '1.4rem' }}>
+                
+                <div>
                   <p className="description" style={{ paddingBottom: "0.8rem" }}><strong>Style</strong></p>
                   <div style={{ marginBottom: "0.8rem" }}><label style={{ display: "flex", alignItems: "center" }}><input style={{ marginRight: "0.6rem" }} type="color" value={buttonBackground} onChange={(event)=>{ setButtonBackground(event.target.value) }}/>Background</label></div>
                   <div style={{ marginBottom: "0.8rem" }}><label style={{ display: "flex", alignItems: "center" }}><input style={{ marginRight: "0.6rem" }} type="color" value={buttonText} onChange={(event)=>{ setButtonText(event.target.value) }}/>Text</label></div>
                   <div style={{ marginBottom: "0.8rem" }}><label style={{ display: "flex", alignItems: "center" }}><input style={{ marginRight: "0.6rem" }} type="range" value={buttonRadius} min="0" max="36" onChange={(event)=>{ setButtonRadius(event.target.value) }}/>Border</label></div>
                 </div>
-                <div style={{ paddingTop: "0.8rem" }}>
-                  <p className="description"><strong>Usage</strong></p>
+
+                <div>
+                  <div style={{ paddingTop: '0.8rem' }}>
+                    <span className="" style={{ opacity: 0.7, paddingBottom: '0.8rem', display: 'block' }}><strong>Preview</strong></span>
+                    <div style={{ display: 'inline-block' }}>
+                      <DePayButtons.DePayButton
+                        css={ buttonCss }
+                        label={ label }
+                        widget={'Payment'}
+                        configuration={ {"accept": payments } }
+                      />
+                    </div>
+                  </div>
+                  <div style={{ paddingTop: "1.4rem" }}>
+                    <p className="description"><strong>Usage</strong></p>
+                  </div>
+                  <div style={{ marginBottom: "0.8rem" }}>
+                    <p className="description" style={{ marginBottom: "0.8rem" }}>
+                      Search for the <strong>"DePay"</strong> block in the editor and drop the button into layouts, pages and posts.
+                      <br/>
+                      You can individually customize each block for more precise configuration.
+                    </p>
+                  </div>
+                  <img style={{ width: '100%', maxWidth: "600px", marginBottom: "2rem" }} src="/wp-content/plugins/depay-payments/core/includes/assets/img/button.gif"/>                
                 </div>
-                <div style={{ marginBottom: "0.8rem" }}>
-                  <p className="description" style={{ marginBottom: "0.8rem" }}>Search for the <strong>"DePay Payments"</strong> block in the editor and drop the button into layouts, pages and posts.</p>
-                </div>
-                <img style={{ maxWidth: "600px", marginBottom: "2rem" }} src="/wp-content/plugins/depay-payments/core/includes/assets/img/button.gif"/>                
+                
               </td>
             </tr>
             <tr>
@@ -335,7 +356,55 @@
                 Widget
               </th>
               <td>
-                <div className="widget-example"><div className="ReactDialog ReactDialogOpen"><div className="ReactDialogRow"><div className="ReactDialogCell"><div className="ReactDialogStack active forward"><div className="ReactDialogStackRow"><div className="ReactDialogStackCell"><div className="ReactDialogAnimation"><div className="Dialog"><div className="DialogHeader"><div className="DialogHeaderTitle"><div className="PaddingTopS PaddingLeftM PaddingRightM"><div className="FontSizeL TextLeft">Payment</div></div></div><div className="DialogHeaderActionRight PaddingTopS PaddingLeftS PaddingRightS"><button className="ButtonCircular" title="Close dialog"><svg className="CloseIcon Icon" height="24" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><line x1="18" x2="6" y1="6" y2="18"></line><line x1="6" x2="18" y1="6" y2="18"></line></svg></button></div></div><div className="DialogBody"><div className="PaddingLeftM PaddingRightM PaddingBottomXS">
+                <div>
+                  <p className="description" style={{ paddingBottom: "0.8rem" }}><strong>Style</strong></p>
+                  <div style={{ marginBottom: "0.8rem" }}><label style={{ display: "flex", alignItems: "center" }}><input style={{ marginRight: "0.6rem" }} type="color" value={widgetPrimary} onChange={(event)=>{ setWidgetPrimary(event.target.value) }}/>Primary</label></div>
+                  <div style={{ marginBottom: "0.8rem" }}><label style={{ display: "flex", alignItems: "center" }}><input style={{ marginRight: "0.6rem" }} type="color" value={widgetButtonText} onChange={(event)=>{ setWidgetButtonText(event.target.value) }}/>Button Text</label></div>
+                  <div style={{ marginBottom: "0.8rem" }}><label style={{ display: "flex", alignItems: "center" }}><input style={{ marginRight: "0.6rem" }} type="range" value={widgetButtonRadius} min="0" max="36" onChange={(event)=>{ setWidgetButtonRadius(event.target.value) }}/>Button Border</label></div>
+                </div>
+
+                <div style={{ paddingTop: '0.4rem' }}>
+                  <p className="description" style={{ paddingBottom: "0.8rem" }}><strong>Amount Currency</strong></p>
+                  <div style={{ marginBottom: "0.8rem" }}>
+                    <label style={{ display: "flex", alignItems: "center" }}>
+                      <select style={{ marginRight: "0.8rem" }} value={ amountCurrency } onChange={(event)=>setAmountCurrency(event.target.value)}>
+                        { CURRENCIES.map((code)=>{
+                            return(<option value={code}>{ code }</option>)
+                          })
+                        }
+                      </select>
+                      Currency used to set prices/amounts
+                    </label>
+                  </div>
+                </div>
+
+                <div style={{ paddingTop: '0.4rem' }}>
+                  <p className="description" style={{ paddingBottom: "0.8rem" }}><strong>Display Currency</strong></p>
+                  <div style={{ marginBottom: "0.8rem" }}>
+                    <label style={{ display: "flex", alignItems: "center" }}>
+                      <select style={{ marginRight: "0.8rem" }} value={ displayedCurrency } onChange={(event)=>setDisplayedCurrency(event.target.value)}>
+                        <option value="local">User's local currency</option>
+                        { CURRENCIES.map((code)=>{
+                            return(<option value={code}>{ code }</option>)
+                          })
+                        }
+                      </select>
+                      Currency displayed to users after conversion
+                    </label>
+                  </div>
+                </div>
+
+                <div style={{ paddingBottom: '1.0rem'}}>
+                  <span className="" style={{ opacity: 0.7, paddingTop: '0.8rem', paddingBottom: '0.4rem', display: 'block' }}><strong>Preview</strong></span>
+                  <div>
+                    <div style={{ marginBottom: "1.2rem" }}>
+                      <label style={{ display: "flex", alignItems: "center" }}>
+                        <input style={{ marginRight: "0.6rem" }} type="number" value={fixAmount} onChange={(event)=>{ setFixAmount(parseFloat(event.target.value)) }}/>
+                        Amount (example)
+                      </label>
+                    </div>
+                  </div>
+                  <div className="widget-example"><div className="ReactDialog ReactDialogOpen"><div className="ReactDialogRow"><div className="ReactDialogCell"><div className="ReactDialogStack active forward"><div className="ReactDialogStackRow"><div className="ReactDialogStackCell"><div className="ReactDialogAnimation"><div className="Dialog"><div className="DialogHeader"><div className="DialogHeaderTitle"><div className="PaddingTopS PaddingLeftM PaddingRightM"><div className="FontSizeL TextLeft">Payment</div></div></div><div className="DialogHeaderActionRight PaddingTopS PaddingLeftS PaddingRightS"><button className="ButtonCircular" title="Close dialog"><svg className="CloseIcon Icon" height="24" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><line x1="18" x2="6" y1="6" y2="18"></line><line x1="6" x2="18" y1="6" y2="18"></line></svg></button></div></div><div className="DialogBody"><div className="PaddingLeftM PaddingRightM PaddingBottomXS">
                   {
                     amount === 'free' &&
                     <div className="Card" title="Change amount"><div className="CardBody"><div className="CardBodyWrapper"><div className="CardTitle">Amount</div><div className="CardText"><div className="TokenAmountRow"><span className="TokenAmountCell">{ displayedCurrencyExample }</span></div></div></div></div><div className="CardAction"><svg className="ChevronRight Icon" height="16" viewBox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" fill-rule="evenodd" stroke-width="1"></path></svg></div></div>
@@ -348,76 +417,6 @@
                     <div class="TokenAmountRow small grey"><span class="TokenSymbolCell">{ displayedCurrencyExample }</span></div>
                   }
                   </h2></div></div><div className="CardAction"><svg className="ChevronRight Icon" height="16" viewBox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" fill-rule="evenodd" stroke-width="1"></path></svg></div></div></div></div><div className="DialogFooter"><div className="PaddingTopXS PaddingRightM PaddingLeftM PaddingBottomM"><div><button className="ButtonPrimary" style={{ color: widgetButtonText, backgroundColor: widgetPrimary, borderRadius: `${widgetButtonRadius}px` }}>Pay</button></div></div></div></div></div></div></div></div></div></div></div></div>
-                <div style={{ paddingTop: '1.4rem' }}>
-                  <p className="description" style={{ paddingBottom: "0.8rem" }}><strong>Amount</strong></p>
-                  <div style={{ marginBottom: "0.8rem" }}>
-                    <select value={ amount } onChange={(event)=>setAmount(event.target.value)}>
-                      <option value="free">User's can select the amount</option>
-                      <option value="fix">I want to set a fix amount</option>
-                    </select>
-                  </div>
-                  <div style={{ marginBottom: "0.8rem" }}>
-                    <label style={{ display: "flex", alignItems: "center" }}>
-                      <select style={{ marginRight: "0.8rem" }} value={ displayedCurrency } onChange={(event)=>setDisplayedCurrency(event.target.value)}>
-                        <option value="local">User's local currency</option>
-                        { CURRENCIES.map((code)=>{
-                            return(<option value={code}>{ code }</option>)
-                          })
-                        }
-                      </select>
-                      Displayed Currency
-                    </label>
-                  </div>
-                  { amount === 'free' &&
-                    <div>
-                      <div style={{ marginBottom: "0.8rem" }}>
-                        <label style={{ display: "flex", alignItems: "center" }}>
-                          <input required="required" placeholder="Start Value" style={{ marginRight: "0.8rem" }} type="number" value={ startValue } onChange={(event)=>setStartValue(event.target.value)}/>
-                          Start Value
-                        </label>
-                      </div>
-                      <div style={{ marginBottom: "0.8rem" }}>
-                        <label style={{ display: "flex", alignItems: "center" }}>
-                          <input required="required" placeholder="Min Value" style={{ marginRight: "0.8rem" }} type="number" value={ minValue } onChange={(event)=>setMinValue(event.target.value)}/>
-                          Min Value
-                        </label>
-                      </div>
-                      <div style={{ marginBottom: "0.8rem" }}>
-                        <label style={{ display: "flex", alignItems: "center" }}>
-                          <input required="required" placeholder="Step Value" style={{ marginRight: "0.8rem" }} type="number" value={ stepValue } onChange={(event)=>setStepValue(event.target.value)}/>
-                          Step Value
-                        </label>
-                      </div>
-                    </div>
-                  }
-                  { amount === 'fix' &&
-                    <div>
-                      <div style={{ marginBottom: "0.8rem" }}>
-                        <label style={{ display: "flex", alignItems: "center" }}>
-                          <select style={{ marginRight: "0.8rem" }} value={ amountCurrency } onChange={(event)=>setAmountCurrency(event.target.value)}>
-                            { CURRENCIES.map((code)=>{
-                                return(<option value={code}>{ code }</option>)
-                              })
-                            }
-                          </select>
-                          Amount Currency
-                        </label>
-                      </div>
-                      <div style={{ marginBottom: "0.8rem" }}>
-                        <label style={{ display: "flex", alignItems: "center" }}>
-                          <input style={{ marginRight: "0.6rem" }} type="number" value={fixAmount} onChange={(event)=>{ setFixAmount(parseFloat(event.target.value)) }}/>
-                          Fix Amount
-                        </label>
-                      </div>
-                    </div>
-                  }
-                  
-                </div>
-                <div style={{ paddingTop: '1.4rem' }}>
-                  <p className="description" style={{ paddingBottom: "0.8rem" }}><strong>Style</strong></p>
-                  <div style={{ marginBottom: "0.8rem" }}><label style={{ display: "flex", alignItems: "center" }}><input style={{ marginRight: "0.6rem" }} type="color" value={widgetPrimary} onChange={(event)=>{ setWidgetPrimary(event.target.value) }}/>Primary</label></div>
-                  <div style={{ marginBottom: "0.8rem" }}><label style={{ display: "flex", alignItems: "center" }}><input style={{ marginRight: "0.6rem" }} type="color" value={widgetButtonText} onChange={(event)=>{ setWidgetButtonText(event.target.value) }}/>Button Text</label></div>
-                  <div style={{ marginBottom: "0.8rem" }}><label style={{ display: "flex", alignItems: "center" }}><input style={{ marginRight: "0.6rem" }} type="range" value={widgetButtonRadius} min="0" max="36" onChange={(event)=>{ setWidgetButtonRadius(event.target.value) }}/>Button Border</label></div>
                 </div>
               </td>
             </tr>
@@ -438,7 +437,7 @@
                       { isDisabled &&
                         <div className="notice inline notice-warning notice-alt" style={{ marginBottom: 0, maxWidth: '300px' }}>
                           { payments?.length > 0 && <span>Please fix all errors before saving!</span> }
-                          { payments?.length == 0 && <span>Please add at least one token as accepted payment!</span> }
+                          { payments?.length == 0 && <span>Please add at least one token!</span> }
                         </div>
                       }
                       { !saved &&
@@ -463,7 +462,7 @@
 
   document.addEventListener( "DOMContentLoaded", function(event) {
     ReactDOM.render(
-        <DePayPaymentsAdminPage />,
+        <DePayWordpressAdminPage />,
         document.getElementById( 'depay-payments-admin' )
     )
   })
@@ -471,4 +470,5 @@
 })(
   window.React,
   window.ReactDOM,
+  window.wp.components,
 );

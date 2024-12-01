@@ -17,8 +17,8 @@ class DePay_Payments_Admin{
 
   public static function add_admin_menu() {
     add_menu_page(
-      'Payments',
-      'Payments',
+      'DePay',
+      'DePay',
       'manage_options',
       'depay-payments',
       array( 'DePay_Payments_Admin', 'admin_page_contents' ),

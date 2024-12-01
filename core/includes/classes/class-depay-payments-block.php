@@ -90,7 +90,7 @@ class DePay_Payments_Block {
       $wrapper_attributes
     );
 
-    wp_register_style('depay-payments-frontend-style', DEPAYPAYMENTS_PLUGIN_URL . 'core/includes/assets/css/frontend.css', '2.5.1');
+    wp_register_style('depay-payments-frontend-style', DEPAYPAYMENTS_PLUGIN_URL . 'core/includes/assets/css/frontend.css', DEPAYPAYMENTS_VERSION);
     wp_enqueue_style('depay-payments-frontend-style');
 
     wp_register_script(
@@ -159,28 +159,20 @@ class DePay_Payments_Block {
     $widgetColorText = get_option( 'DePay_payments_widget_color_text' );
     $widgetCSS = preg_replace('~[\r\n]+~', '', get_option( 'DePay_payments_widget_css' ));
     $buttonCSS = preg_replace('~[\r\n]+~', '', get_option( 'DePay_payments_button_css' ));
-    $buttonLabel = get_option( 'DePay_payments_button_label' );
+    $buttonLabel = isset($attributes['buttonLabel']) ? $attributes['buttonLabel'] : get_option( 'DePay_payments_button_label' );
     $receiver = get_option('DePay_payments_receiving_wallet_address');
-    $widgetAmountType = get_option( 'DePay_payments_widget_amount_type' );
-    $widgetDisplayCurrency = get_option( 'DePay_payments_widget_display_currency' );
-    $widgetAmountFreeStart = get_option( 'DePay_payments_widget_amount_free_start' );
-    $widgetAmountFreeMin = get_option( 'DePay_payments_widget_amount_free_min' );
-    $widgetAmountFreeStep = get_option( 'DePay_payments_widget_amount_free_step' );
+    $widgetTitle = isset($attributes['widgetTitle']) ? $attributes['widgetTitle'] : 'Payment';
+    $widgetAmountType = isset($attributes['paymentAmountType']) ? $attributes['paymentAmountType'] : get_option( 'DePay_payments_widget_amount_type' );
     $widgetAmountCurrency = get_option( 'DePay_payments_widget_amount_currency' );
-    $widgetFixAmount = get_option( 'DePay_payments_widget_fix_amount' );
+    $widgetDisplayCurrency = get_option( 'DePay_payments_widget_display_currency' );
+    $widgetAmountFreeStart = isset($attributes['paymentAmountStart']) ? $attributes['paymentAmountStart'] : get_option( 'DePay_payments_widget_amount_free_start' );
+    $widgetAmountFreeMin = isset($attributes['paymentAmountMin']) ? $attributes['paymentAmountMin'] : get_option( 'DePay_payments_widget_amount_free_min' );
+    $widgetAmountFreeStep = isset($attributes['paymentAmountStep']) ? $attributes['paymentAmountStep'] : get_option( 'DePay_payments_widget_amount_free_step' );
+    $widgetFixAmount = isset($attributes['paymentAmount']) ? $attributes['paymentAmount'] : get_option( 'DePay_payments_widget_fix_amount' );
     $accept = [];
-    if($attributes['paymentSettings'] === 'local' && $attributes['paymentAmountType'] === 'free') {
-      $widgetAmountType = 'free';
-      $widgetAmountFreeStart = "1";
-      $widgetAmountFreeMin = "1";
-      $widgetAmountFreeStep = "1";
-    } else if($attributes['paymentSettings'] === 'local' && $attributes['paymentAmountType'] === 'fixed') {
-      $widgetAmountType = 'fixed';
-      $widgetFixAmount = $attributes['paymentAmount'];
-    }
 
     if(empty(get_option('DePay_payments_accepted_payments'))) { 
-      $html = '<a href="/wp-admin/admin.php?page=depay-payments" target="_blank">!!! Please finish your payment configuration !!!</a>';
+      $html = '<a href="/wp-admin/admin.php?page=depay-payments" target="_blank">Please finish your DePay configuration!</a>';
 
       return sprintf(
         '<div %1$s>%2$s</div>',
@@ -201,7 +193,7 @@ class DePay_Payments_Block {
 
     $amount = (object)[];
 
-    if(empty($widgetAmountType) || $widgetAmountType == 'free') {
+    if($widgetAmountType == 'free') {
       if(!empty($widgetAmountFreeStart)) { $amount->start = (float)$widgetAmountFreeStart; }
       if(!empty($widgetAmountFreeMin)) { $amount->min = (float)$widgetAmountFreeMin; }
       if(!empty($widgetAmountFreeStep)) { $amount->step = (float)$widgetAmountFreeStep; }
@@ -210,9 +202,9 @@ class DePay_Payments_Block {
       if(!empty($widgetFixAmount)) { $amount->fix = (float)$widgetFixAmount; }
     }
 
-    $currency = (empty($widgetDisplayCurrency) || $widgetDisplayCurrency === 'local') ? "" : '"currency": "'.$widgetDisplayCurrency.'", ';
+    $currency = (empty($widgetDisplayCurrency) || $widgetDisplayCurrency === 'local') ? "" : '"currency": "'.$widgetDisplayCurrency.'"';
 
-    $html = '<div class="DePayButton" label="'.esc_html($buttonLabel).'" widget="Payment" configuration=\'{ '.$currency.' "style": { "colors": { "primary": "'.esc_html($widgetColorPrimary).'", "buttonText": "'.esc_html($widgetColorButtons).'", "icons": "'.esc_html($widgetColorIcons).'", "text": "'.esc_html($widgetColorText).'" }, "css": "'.esc_html($widgetCSS).'" }, "accept": '.str_replace('&quot;', '"', esc_html($accept)).', "amount": '.json_encode($amount).' }\' css="'.esc_html($buttonCSS).'"></div><script>if(typeof DePayButtons != "undefined") { DePayButtons.init({document: document}); }</script>';
+    $html = '<div class="DePayButton" label="'.esc_html($buttonLabel).'" widget="Payment" configuration=\'{ '.$currency.', "title": "' . $widgetTitle . '", "style": { "colors": { "primary": "'.esc_html($widgetColorPrimary).'", "buttonText": "'.esc_html($widgetColorButtons).'", "icons": "'.esc_html($widgetColorIcons).'", "text": "'.esc_html($widgetColorText).'" }, "css": "'.esc_html($widgetCSS).'" }, "accept": '.str_replace('&quot;', '"', esc_html($accept)).', "amount": '.json_encode($amount).' }\' css="'.esc_html($buttonCSS).'"></div><script>if(typeof DePayButtons != "undefined") { DePayButtons.init({document: document}); }</script>';
 
     return sprintf(
       '<div %1$s>%2$s</div>',
