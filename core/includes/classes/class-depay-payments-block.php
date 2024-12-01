@@ -162,7 +162,7 @@ class DePay_Payments_Block {
     $buttonLabel = isset($attributes['buttonLabel']) ? $attributes['buttonLabel'] : get_option( 'DePay_payments_button_label' );
     $receiver = get_option('DePay_payments_receiving_wallet_address');
     $widgetTitle = isset($attributes['widgetTitle']) ? $attributes['widgetTitle'] : 'Payment';
-    $widgetAmountType = isset($attributes['paymentAmountType']) ? $attributes['paymentAmountType'] : get_option( 'DePay_payments_widget_amount_type' );
+    $widgetAmountType = isset($attributes['paymentAmountType']) ? $attributes['paymentAmountType'] : 'fixed';
     $widgetAmountCurrency = get_option( 'DePay_payments_widget_amount_currency' );
     $widgetDisplayCurrency = get_option( 'DePay_payments_widget_display_currency' );
     $widgetAmountFreeStart = isset($attributes['paymentAmountStart']) ? $attributes['paymentAmountStart'] : get_option( 'DePay_payments_widget_amount_free_start' );
