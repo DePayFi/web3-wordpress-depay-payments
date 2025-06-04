@@ -154,7 +154,6 @@ class DePay_Payments_Block {
     wp_enqueue_script( 'depay-payments-init-buttons' );
 
     $widgetColorPrimary = get_option( 'DePay_payments_widget_color_primary' );
-    $widgetColorButtons = get_option( 'DePay_payments_widget_color_buttons' );
     $widgetColorIcons = get_option( 'DePay_payments_widget_color_icons' );
     $widgetColorText = get_option( 'DePay_payments_widget_color_text' );
     $widgetCSS = preg_replace('~[\r\n]+~', '', get_option( 'DePay_payments_widget_css' ));
@@ -204,7 +203,7 @@ class DePay_Payments_Block {
 
     $currency = (empty($widgetDisplayCurrency) || $widgetDisplayCurrency === 'local') ? "" : '"currency": "'.$widgetDisplayCurrency.'", ';
 
-    $html = '<div class="DePayButton" label="'.esc_html($buttonLabel).'" widget="Payment" configuration=\'{ '.$currency.' "title": "' . $widgetTitle . '", "style": { "colors": { "primary": "'.esc_html($widgetColorPrimary).'", "buttonText": "'.esc_html($widgetColorButtons).'", "icons": "'.esc_html($widgetColorIcons).'", "text": "'.esc_html($widgetColorText).'" }, "css": "'.esc_html($widgetCSS).'" }, "accept": '.str_replace('&quot;', '"', esc_html($accept)).', "amount": '.json_encode($amount).' }\' css="'.esc_html($buttonCSS).'"></div><script>if(typeof DePayButtons != "undefined") { DePayButtons.init({document: document}); }</script>';
+    $html = '<div class="DePayButton" label="'.esc_html($buttonLabel).'" widget="Payment" configuration=\'{ '.$currency.' "title": "' . $widgetTitle . '", "accept": '.str_replace('&quot;', '"', esc_html($accept)).', "amount": '.json_encode($amount).' }\' css="'.esc_html($buttonCSS).'"></div><script>if(typeof DePayButtons != "undefined") { DePayButtons.init({document: document}); }</script>';
 
     return sprintf(
       '<div %1$s>%2$s</div>',

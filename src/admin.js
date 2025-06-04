@@ -17,8 +17,6 @@
     const [ widgetPrimary, setWidgetPrimary ] = useState()
     const [ widgetButtonRadius, setWidgetButtonRadius ] = useState()
     const [ widgetButtonText, setWidgetButtonText ] = useState()
-    const [ widgetIconColor, setWidgetIconColor ] = useState()
-    const [ widgetText, setWidgetText ] = useState()
     const [ label, setLabel ] = useState()
     const [ buttonCss, setButtonCss ] = useState()
     const [ widgetCss, setWidgetCss ] = useState()
@@ -132,17 +130,9 @@
       setButtonCss(`button {\n  border-radius: ${buttonRadius || 2}px;\n  color: ${buttonText || "#FFFFFF"};\n  background: ${buttonBackground || "#32373c"};\n}`)
     }
 
-    const updateWidgetStyle = () =>{
-      setWidgetCss(`.ButtonPrimary { color: ${widgetButtonText || "#FFFFFF"}; border-radius: ${widgetButtonRadius}px;}`)
-    }
-
     useEffect(()=>{
       updateButtonStyle()
     },[buttonRadius, buttonText, buttonBackground])
-
-    useEffect(()=>{
-      updateWidgetStyle()
-    },[widgetPrimary, widgetButtonText, widgetButtonRadius, widgetIconColor, widgetText])
 
     useEffect(()=>{
       wp.api.loadPromise.then(() => {
@@ -153,13 +143,9 @@
           }
           setLabel(response.DePay_payments_button_payment_label || 'Pay')
           setButtonCss(response.DePay_payments_button_css || "button {\n  border-radius: 2px;\n  color: #FFFFFF;\n  background: #32373c;\n}")
-          setWidgetCss(response.DePay_payments_widget_css || ".ButtonPrimary {border-radius: 2px;}")
           setButtonBackground(response.DePay_payments_button_background_color || "#32373c")
           setButtonText(response.DePay_payments_button_text_color || "#FFFFFF")
           setButtonRadius(response.DePay_payments_button_border_radius || "2")
-          setWidgetPrimary(response.DePay_payments_widget_color_primary || "#32373c")
-          setWidgetButtonRadius(response.DePay_payments_widget_button_border_radius || "2")
-          setWidgetButtonText(response.DePay_payments_widget_color_button_text || "#FFFFFF")
           setAmount(response.DePay_payments_widget_amount_type || 'fix')
           setDisplayedCurrency(response.DePay_payments_widget_display_currency?.length > 2 ? response.DePay_payments_widget_display_currency : 'local')
           setStartValue(response.DePay_payments_widget_amount_free_start || 1)
@@ -167,8 +153,6 @@
           setStepValue(response.DePay_payments_widget_amount_free_step || 1)
           setAmountCurrency(response.DePay_payments_widget_amount_currency?.length > 0 ? response.DePay_payments_widget_amount_currency : 'USD')
           setFixAmount(response.DePay_payments_widget_fix_amount || 100)
-          setWidgetIconColor()
-          setWidgetText()
           setSettingsAreLoaded(true)
         })
       }).catch(()=>{})
@@ -180,7 +164,7 @@
 
     useEffect(()=>{
       setSaved(false)
-    }, [ buttonRadius, buttonBackground, buttonText, widgetPrimary, widgetButtonRadius, widgetButtonText, widgetIconColor, widgetText, label, buttonCss, widgetCss, payments, amount, displayedCurrency, startValue, minValue, stepValue, amountCurrency, fixAmount ])
+    }, [ buttonRadius, buttonBackground, buttonText, label, buttonCss, payments, amount, displayedCurrency, startValue, minValue, stepValue, amountCurrency, fixAmount ])
 
     useEffect(()=>{
 
@@ -337,12 +321,6 @@
                 Widget
               </th>
               <td>
-                <div>
-                  <p className="description" style={{ paddingBottom: "0.8rem" }}><strong>Style</strong></p>
-                  <div style={{ marginBottom: "0.8rem" }}><label style={{ display: "flex", alignItems: "center" }}><input style={{ marginRight: "0.6rem" }} type="color" value={widgetPrimary} onChange={(event)=>{ setWidgetPrimary(event.target.value) }}/>Primary</label></div>
-                  <div style={{ marginBottom: "0.8rem" }}><label style={{ display: "flex", alignItems: "center" }}><input style={{ marginRight: "0.6rem" }} type="color" value={widgetButtonText} onChange={(event)=>{ setWidgetButtonText(event.target.value) }}/>Button Text</label></div>
-                  <div style={{ marginBottom: "0.8rem" }}><label style={{ display: "flex", alignItems: "center" }}><input style={{ marginRight: "0.6rem" }} type="range" value={widgetButtonRadius} min="0" max="36" onChange={(event)=>{ setWidgetButtonRadius(event.target.value) }}/>Button Border</label></div>
-                </div>
 
                 <div style={{ paddingTop: '0.4rem' }}>
                   <p className="description" style={{ paddingBottom: "0.8rem" }}><strong>Amount Currency</strong></p>
@@ -375,23 +353,6 @@
                   </div>
                 </div>
 
-                <div style={{ paddingBottom: '1.0rem'}}>
-                  <span className="" style={{ opacity: 0.7, paddingTop: '0.8rem', paddingBottom: '0.4rem', display: 'block' }}><strong>Preview</strong></span>
-                  <div>
-                    <div style={{ marginBottom: "1.2rem" }}>
-                      <label style={{ display: "flex", alignItems: "center" }}>
-                        <input style={{ marginRight: "0.6rem" }} type="number" value={fixAmount} onChange={(event)=>{ setFixAmount(parseFloat(event.target.value)) }}/>
-                        Amount (example)
-                      </label>
-                    </div>
-                  </div>
-                  <div className="widget-example"><div className="ReactDialog ReactDialogOpen"><div className="ReactDialogRow"><div className="ReactDialogCell"><div className="ReactDialogStack active forward"><div className="ReactDialogStackRow"><div className="ReactDialogStackCell"><div className="ReactDialogAnimation"><div className="Dialog"><div className="DialogHeader"><div className="DialogHeaderTitle"><div className="PaddingTopS PaddingLeftM PaddingRightM"><div className="FontSizeL TextLeft">Payment</div></div></div><div className="DialogHeaderActionRight PaddingTopS PaddingLeftS PaddingRightS"><button className="ButtonCircular" title="Close dialog"><svg className="CloseIcon Icon" height="24" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><line x1="18" x2="6" y1="6" y2="18"></line><line x1="6" x2="18" y1="6" y2="18"></line></svg></button></div></div><div className="DialogBody"><div className="PaddingLeftM PaddingRightM PaddingBottomXS">
-                  <div className="Card" title="Change payment"><div className="CardImage"><img className="js-widget-payment-example-image" src="https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"/></div><div className="CardBody"><div className="CardBodyWrapper"><h2 className="CardText">
-
-                  <div className="TokenAmountRow"><span className="TokenSymbolCell js-widget-example-symbol">USDT</span><span className="TokenAmountCell js-widget-example-amount">{usdValue}</span></div>
-                  <div class="TokenAmountRow small grey"><span class="TokenSymbolCell">{ displayedCurrencyExample }</span></div>
-                  </h2></div></div><div className="CardAction"><svg className="ChevronRight Icon" height="16" viewBox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" fill-rule="evenodd" stroke-width="1"></path></svg></div></div></div></div><div className="DialogFooter"><div className="PaddingTopXS PaddingRightM PaddingLeftM PaddingBottomM"><div><button className="ButtonPrimary" style={{ color: widgetButtonText, backgroundColor: widgetPrimary, borderRadius: `${widgetButtonRadius}px` }}>Pay</button></div></div></div></div></div></div></div></div></div></div></div></div>
-                </div>
               </td>
             </tr>
             <tr>

@@ -3,7 +3,7 @@ Contributors: depayfi
 Tags: web3, crypto, payments, DePay, USDC
 Requires at least: 5.0
 Tested up to: 6.7
-Stable tag: 3.0.4
+Stable tag: 3.1.0
 Requires PHP: 5.6
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -34,7 +34,6 @@ DePay supports [most crypto wallets](https://depay.com/wallets).
 * BNB Smart Chain
 * Polygon
 * Solana
-* Fantom
 * Gnosis
 * Avalanche
 * Arbitrum
@@ -69,6 +68,11 @@ Start for free. Pay-as-you-go 1.5% per transaction.
 4. Customize the style of the payment widget.
 
 == Changelog ==
+
+= 2025-6-4 - v3.1.0 =
+* Upgraded to DePay V3, including the latest payment workflows and API enhancements.
+* Faster initialization: reduced time-to-first-interaction when starting a payment.
+* Improving overall page speed: Deferred JavaScript assets to load only on the checkout page.
 
 = 2024-12-1 - v3.0.4 =
 * fix admin preview of the widget
