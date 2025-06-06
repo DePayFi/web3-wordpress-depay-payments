@@ -6,7 +6,7 @@
   "category": "widgets",
   "description": "Accept Web3 Crypto Payments & Donations. Supports various tokens, blockchains and wallets. MetaMask, Phantom, USDC, USDT, ETH, SOL, BSC, POL, xDAI…",
   "keywords": [ "payments", "crypto", "web3", "DePay", "USDC" ],
-  "version": "3.1.0",
+  "version": "3.1.1",
   "textdomain": "depay-payments",
   "example": {},
   "editorScript": "depay-payments-script",
