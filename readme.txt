@@ -2,8 +2,8 @@
 Contributors: depayfi
 Tags: web3, crypto, payments, DePay, USDC
 Requires at least: 5.0
-Tested up to: 6.7
-Stable tag: 3.1.2
+Tested up to: 6.8
+Stable tag: 3.1.3
 Requires PHP: 5.6
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -68,6 +68,9 @@ Start for free. Pay-as-you-go 1.5% per transaction.
 4. Customize the style of the payment widget.
 
 == Changelog ==
+
+= 2025-7-2 - v3.1.3 =
+* test up to Wordpress 6.8
 
 = 2025-7-2 - v3.1.2 =
 * fix: ensures to load all payment options in some cases
